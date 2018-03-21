@@ -6,7 +6,6 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,15 +14,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author renan
  */
 @Entity
-@Table(name = "cidade", catalog = "amamentai-api", schema = "public")
-public class Cidade implements Serializable {
+@Table(name = "filho_doadora", catalog = "amamentai-api", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "FilhoDoadora.findAll", query = "SELECT f FROM FilhoDoadora f")
+    , @NamedQuery(name = "FilhoDoadora.findById", query = "SELECT f FROM FilhoDoadora f WHERE f.id = :id")})
+public class FilhoDoadora implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,24 +37,18 @@ public class Cidade implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "nome")
-    private String nome;
-    @JoinColumn(name = "estado", referencedColumnName = "id")
-    @ManyToOne
-    private Estado estado;
-   
+    @JoinColumn(name = "doadora", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Doadora doadora;
+    @JoinColumn(name = "filho", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Filho filho;
 
-    public Cidade() {
+    public FilhoDoadora() {
     }
 
-    public Cidade(Integer id) {
+    public FilhoDoadora(Integer id) {
         this.id = id;
-    }
-
-    public Cidade(Integer id, String nome) {
-        this.id = id;
-        this.nome = nome;
     }
 
     public Integer getId() {
@@ -59,20 +59,20 @@ public class Cidade implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public Doadora getDoadora() {
+        return doadora;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDoadora(Doadora doadora) {
+        this.doadora = doadora;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public Filho getFilho() {
+        return filho;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setFilho(Filho filho) {
+        this.filho = filho;
     }
 
     @Override
@@ -85,10 +85,10 @@ public class Cidade implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cidade)) {
+        if (!(object instanceof FilhoDoadora)) {
             return false;
         }
-        Cidade other = (Cidade) object;
+        FilhoDoadora other = (FilhoDoadora) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -97,7 +97,7 @@ public class Cidade implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.amamentai.api.model.Cidade[ id=" + id + " ]";
+        return "com.example.amamentai.api.model.FilhoDoadora[ id=" + id + " ]";
     }
     
 }

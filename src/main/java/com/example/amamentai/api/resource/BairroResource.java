@@ -9,16 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.amamentai.api.event.RecursoCriadoEvent;
 import com.example.amamentai.api.model.Bairro;
 import com.example.amamentai.api.repository.BairroRepository;
+import com.example.amamentai.api.service.BairroService;
 
 @RestController
 @RequestMapping("/bairros")
@@ -26,6 +30,9 @@ public class BairroResource {
 	
 	@Autowired
 	private BairroRepository bairroRepository;
+	
+	@Autowired
+	private BairroService bairroService;
 	
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -47,6 +54,19 @@ public class BairroResource {
 	@GetMapping("/{id}")
 	public Bairro buscarPeloCodigo(@PathVariable Long id) {
 		return bairroRepository.findOne(id);
+	}
+	
+
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void remover(@PathVariable Long id) {
+		bairroRepository.delete(id);
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Bairro> atualizar(@PathVariable Long id, @Valid @RequestBody Bairro bairro){
+		Bairro bairroSalva = bairroService.atualizar(id, bairro);
+		return ResponseEntity.ok(bairroSalva);
 	}
 
 }

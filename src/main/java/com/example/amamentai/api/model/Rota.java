@@ -28,13 +28,12 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author renan
  */
 @Entity
-@Table(name = "doadora", catalog = "amamentai-api", schema = "public")
+@Table(name = "rota", catalog = "amamentai-api", schema = "public")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Doadora.findAll", query = "SELECT d FROM Doadora d")
-    , @NamedQuery(name = "Doadora.findById", query = "SELECT d FROM Doadora d WHERE d.id = :id")
-    , @NamedQuery(name = "Doadora.findByAtivo", query = "SELECT d FROM Doadora d WHERE d.ativo = :ativo")})
-public class Doadora implements Serializable {
+    @NamedQuery(name = "Rota.findAll", query = "SELECT r FROM Rota r")
+    , @NamedQuery(name = "Rota.findById", query = "SELECT r FROM Rota r WHERE r.id = :id")})
+public class Rota implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,20 +41,19 @@ public class Doadora implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "ativo")
-    private Boolean ativo;
-    @JoinColumn(name = "pessoa", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rota")
+    private List<Agenda> agendaList;
+    @JoinColumn(name = "dia_semana", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Pessoa pessoa;
-    @OneToMany(mappedBy = "doadora")
-    private List<Doacao> doacaoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doadora")
-    private List<FilhoDoadora> filhoDoadoraList;
+    private DiaSemana diaSemana;
+    @JoinColumn(name = "horario", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Horario horario;
 
-    public Doadora() {
+    public Rota() {
     }
 
-    public Doadora(Integer id) {
+    public Rota(Integer id) {
         this.id = id;
     }
 
@@ -67,38 +65,29 @@ public class Doadora implements Serializable {
         this.id = id;
     }
 
-    public Boolean getAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(Boolean ativo) {
-        this.ativo = ativo;
-    }
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-
     @XmlTransient
-    public List<Doacao> getDoacaoList() {
-        return doacaoList;
+    public List<Agenda> getAgendaList() {
+        return agendaList;
     }
 
-    public void setDoacaoList(List<Doacao> doacaoList) {
-        this.doacaoList = doacaoList;
+    public void setAgendaList(List<Agenda> agendaList) {
+        this.agendaList = agendaList;
     }
 
-    @XmlTransient
-    public List<FilhoDoadora> getFilhoDoadoraList() {
-        return filhoDoadoraList;
+    public DiaSemana getDiaSemana() {
+        return diaSemana;
     }
 
-    public void setFilhoDoadoraList(List<FilhoDoadora> filhoDoadoraList) {
-        this.filhoDoadoraList = filhoDoadoraList;
+    public void setDiaSemana(DiaSemana diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+
+    public Horario getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Horario horario) {
+        this.horario = horario;
     }
 
     @Override
@@ -111,10 +100,10 @@ public class Doadora implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Doadora)) {
+        if (!(object instanceof Rota)) {
             return false;
         }
-        Doadora other = (Doadora) object;
+        Rota other = (Rota) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -123,7 +112,7 @@ public class Doadora implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.amamentai.api.model.Doadora[ id=" + id + " ]";
+        return "com.example.amamentai.api.model.Rota[ id=" + id + " ]";
     }
     
 }

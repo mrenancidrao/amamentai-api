@@ -6,24 +6,33 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author renan
  */
 @Entity
-@Table(name = "cidade", catalog = "amamentai-api", schema = "public")
-public class Cidade implements Serializable {
+@Table(name = "estado", catalog = "amamentai-api", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Estado.findAll", query = "SELECT e FROM Estado e")
+    , @NamedQuery(name = "Estado.findById", query = "SELECT e FROM Estado e WHERE e.id = :id")
+    , @NamedQuery(name = "Estado.findBySigla", query = "SELECT e FROM Estado e WHERE e.sigla = :sigla")
+    , @NamedQuery(name = "Estado.findByNome", query = "SELECT e FROM Estado e WHERE e.nome = :nome")})
+public class Estado implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -32,22 +41,24 @@ public class Cidade implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @Column(name = "sigla")
+    private String sigla;
+    @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
-    @JoinColumn(name = "estado", referencedColumnName = "id")
-    @ManyToOne
-    private Estado estado;
-   
+    @OneToMany(mappedBy = "estado")
+    private List<Cidade> cidadeList;
 
-    public Cidade() {
+    public Estado() {
     }
 
-    public Cidade(Integer id) {
+    public Estado(Integer id) {
         this.id = id;
     }
 
-    public Cidade(Integer id, String nome) {
+    public Estado(Integer id, String sigla, String nome) {
         this.id = id;
+        this.sigla = sigla;
         this.nome = nome;
     }
 
@@ -59,6 +70,14 @@ public class Cidade implements Serializable {
         this.id = id;
     }
 
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -67,12 +86,13 @@ public class Cidade implements Serializable {
         this.nome = nome;
     }
 
-    public Estado getEstado() {
-        return estado;
+    @XmlTransient
+    public List<Cidade> getCidadeList() {
+        return cidadeList;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setCidadeList(List<Cidade> cidadeList) {
+        this.cidadeList = cidadeList;
     }
 
     @Override
@@ -85,10 +105,10 @@ public class Cidade implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cidade)) {
+        if (!(object instanceof Estado)) {
             return false;
         }
-        Cidade other = (Cidade) object;
+        Estado other = (Estado) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -97,7 +117,7 @@ public class Cidade implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.amamentai.api.model.Cidade[ id=" + id + " ]";
+        return "com.example.amamentai.api.model.Estado[ id=" + id + " ]";
     }
     
 }

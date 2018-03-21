@@ -6,24 +6,32 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author renan
  */
 @Entity
-@Table(name = "cidade", catalog = "amamentai-api", schema = "public")
-public class Cidade implements Serializable {
+@Table(name = "motivo", catalog = "amamentai-api", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Motivo.findAll", query = "SELECT m FROM Motivo m")
+    , @NamedQuery(name = "Motivo.findById", query = "SELECT m FROM Motivo m WHERE m.id = :id")
+    , @NamedQuery(name = "Motivo.findByNome", query = "SELECT m FROM Motivo m WHERE m.nome = :nome")})
+public class Motivo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -34,19 +42,17 @@ public class Cidade implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
-    @JoinColumn(name = "estado", referencedColumnName = "id")
-    @ManyToOne
-    private Estado estado;
-   
+    @OneToMany(mappedBy = "motivo")
+    private List<MotivoStatusAgenda> motivoStatusAgendaList;
 
-    public Cidade() {
+    public Motivo() {
     }
 
-    public Cidade(Integer id) {
+    public Motivo(Integer id) {
         this.id = id;
     }
 
-    public Cidade(Integer id, String nome) {
+    public Motivo(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -67,12 +73,13 @@ public class Cidade implements Serializable {
         this.nome = nome;
     }
 
-    public Estado getEstado() {
-        return estado;
+    @XmlTransient
+    public List<MotivoStatusAgenda> getMotivoStatusAgendaList() {
+        return motivoStatusAgendaList;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setMotivoStatusAgendaList(List<MotivoStatusAgenda> motivoStatusAgendaList) {
+        this.motivoStatusAgendaList = motivoStatusAgendaList;
     }
 
     @Override
@@ -85,10 +92,10 @@ public class Cidade implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cidade)) {
+        if (!(object instanceof Motivo)) {
             return false;
         }
-        Cidade other = (Cidade) object;
+        Motivo other = (Motivo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -97,7 +104,7 @@ public class Cidade implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.amamentai.api.model.Cidade[ id=" + id + " ]";
+        return "com.example.amamentai.api.model.Motivo[ id=" + id + " ]";
     }
     
 }

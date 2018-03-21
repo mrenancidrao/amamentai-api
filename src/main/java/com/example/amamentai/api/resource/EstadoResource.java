@@ -21,69 +21,68 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.amamentai.api.event.RecursoCriadoEvent;
-import com.example.amamentai.api.model.Cidade;
 import com.example.amamentai.api.model.Estado;
-import com.example.amamentai.api.repository.CidadeRepository;
-import com.example.amamentai.api.service.CidadeService;
+import com.example.amamentai.api.repository.EstadoRepository;
+import com.example.amamentai.api.service.EstadoService;
 
 @RestController
-@RequestMapping("/cidades")
-public class CidadeResource {
+@RequestMapping("/estados")
+public class EstadoResource {
 	
 	@Autowired
-	private CidadeRepository cidadeRepository;
+	private EstadoRepository estadoRepository;
 	
 	@Autowired
-	private CidadeService cidadeService;
+	private EstadoService estadoService;
 	
 	@Autowired
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
-	public List<Cidade> listar() {
-		return cidadeRepository.findAll();
+	public List<Estado> listar() {
+		return estadoRepository.findAll();
 	}
 	
 	@PostMapping
-	public ResponseEntity<Cidade> criar(@Valid @RequestBody Cidade cidade, HttpServletResponse response) {
-		Cidade cidadeSalva = cidadeRepository.save(cidade);
+	public ResponseEntity<Estado> criar(@Valid @RequestBody Estado estado, HttpServletResponse response) {
+		Estado estadoSalva = estadoRepository.save(estado);
 		
-		publisher.publishEvent(new RecursoCriadoEvent(this, response, cidadeSalva.getId()));
+		publisher.publishEvent(new RecursoCriadoEvent(this, response, estadoSalva.getId()));
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(cidadeSalva);
+		return ResponseEntity.status(HttpStatus.CREATED).body(estadoSalva);
 	}
 	
 	@PostMapping("/criarLote")
-	public ResponseEntity<List<Cidade>> criarCidades(@Valid @RequestBody List<Cidade> cidades, HttpServletResponse response) {
+	public ResponseEntity<List<Estado>> criarEstados(@Valid @RequestBody List<Estado> estados, HttpServletResponse response) {
 		
-		List<Cidade> cidadesSalvos = new ArrayList<Cidade>();
+		List<Estado> estadosSalvos = new ArrayList<Estado>();
 		
-		for (Cidade tmp : cidades) {
+		for (Estado tmp : estados) {
 			
-			Cidade cidadeSalva = cidadeRepository.save(tmp);
-			cidadesSalvos.add(cidadeSalva);
+			Estado estadoSalva = estadoRepository.save(tmp);
+			estadosSalvos.add(estadoSalva);
 		}
 		
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(cidadesSalvos);
+		return ResponseEntity.status(HttpStatus.CREATED).body(estadosSalvos);
 	}
 	
 	@GetMapping("/{id}")
-	public Cidade buscarPeloCodigo(@PathVariable Long id) {
-		return cidadeRepository.findOne(id);
+	public Estado buscarPeloCodigo(@PathVariable Long id) {
+		return estadoRepository.findOne(id);
 	}
 	
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long id) {
-		cidadeRepository.delete(id);
+		estadoRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Cidade> atualizar(@PathVariable Long id, @Valid @RequestBody Cidade cidade){
-		Cidade cidadeSalva = cidadeService.atualizar(id, cidade);
-		return ResponseEntity.ok(cidadeSalva);
+	public ResponseEntity<Estado> atualizar(@PathVariable Long id, @Valid @RequestBody Estado estado){
+		Estado estadoSalva = estadoService.atualizar(id, estado);
+		return ResponseEntity.ok(estadoSalva);
 	}
 
 }

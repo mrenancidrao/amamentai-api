@@ -6,24 +6,33 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author renan
  */
 @Entity
-@Table(name = "cidade", catalog = "amamentai-api", schema = "public")
-public class Cidade implements Serializable {
+@Table(name = "objetivo", catalog = "amamentai-api", schema = "public")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Objetivo.findAll", query = "SELECT o FROM Objetivo o")
+    , @NamedQuery(name = "Objetivo.findById", query = "SELECT o FROM Objetivo o WHERE o.id = :id")
+    , @NamedQuery(name = "Objetivo.findByNome", query = "SELECT o FROM Objetivo o WHERE o.nome = :nome")})
+public class Objetivo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -34,19 +43,17 @@ public class Cidade implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
-    @JoinColumn(name = "estado", referencedColumnName = "id")
-    @ManyToOne
-    private Estado estado;
-   
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "objetivo")
+    private List<Agenda> agendaList;
 
-    public Cidade() {
+    public Objetivo() {
     }
 
-    public Cidade(Integer id) {
+    public Objetivo(Integer id) {
         this.id = id;
     }
 
-    public Cidade(Integer id, String nome) {
+    public Objetivo(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -67,12 +74,13 @@ public class Cidade implements Serializable {
         this.nome = nome;
     }
 
-    public Estado getEstado() {
-        return estado;
+    @XmlTransient
+    public List<Agenda> getAgendaList() {
+        return agendaList;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setAgendaList(List<Agenda> agendaList) {
+        this.agendaList = agendaList;
     }
 
     @Override
@@ -85,10 +93,10 @@ public class Cidade implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cidade)) {
+        if (!(object instanceof Objetivo)) {
             return false;
         }
-        Cidade other = (Cidade) object;
+        Objetivo other = (Objetivo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -97,7 +105,7 @@ public class Cidade implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.amamentai.api.model.Cidade[ id=" + id + " ]";
+        return "com.example.amamentai.api.model.Objetivo[ id=" + id + " ]";
     }
     
 }
