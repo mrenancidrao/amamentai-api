@@ -14,21 +14,21 @@ public class FuncionarioService {
 	@Autowired
 	FuncionarioRepository funcionarioRepository;
 
-	public Funcionario atualizar(Long id, Funcionario funcionario) {
-		Funcionario funcionarioSalva = buscarFuncionarioPeloCodigo(id);
+	public Funcionario atualizar(Integer id, Funcionario funcionario) {
+		Funcionario funcionarioSalva = buscarFuncionarioPeloId(id);
 		
 		BeanUtils.copyProperties(funcionario, funcionarioSalva, "id");
 		return funcionarioRepository.save(funcionarioSalva);
 	}
 
 
-	public void atualizarPropriedadeAtivo(Long id, Boolean ativo) {
-		Funcionario funcionarioSalva = buscarFuncionarioPeloCodigo(id);
+	public void atualizarPropriedadeAtivo(Integer id, Boolean ativo) {
+		Funcionario funcionarioSalva = buscarFuncionarioPeloId(id);
 		
 		funcionarioRepository.save(funcionarioSalva);
 	}
 	
-	public Funcionario buscarFuncionarioPeloCodigo(Long id) {
+	public Funcionario buscarFuncionarioPeloId(Integer id) {
 		Funcionario funcionarioSalva = funcionarioRepository.findOne(id);
 		if (funcionarioSalva == null) {
 			throw new EmptyResultDataAccessException(1);

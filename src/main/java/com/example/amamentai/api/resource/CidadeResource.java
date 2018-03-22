@@ -22,12 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.amamentai.api.event.RecursoCriadoEvent;
 import com.example.amamentai.api.model.Cidade;
-import com.example.amamentai.api.model.Estado;
 import com.example.amamentai.api.repository.CidadeRepository;
 import com.example.amamentai.api.service.CidadeService;
 
 @RestController
-@RequestMapping("/cidades")
+@RequestMapping("/cidade")
 public class CidadeResource {
 	
 	@Autowired
@@ -69,19 +68,19 @@ public class CidadeResource {
 	}
 	
 	@GetMapping("/{id}")
-	public Cidade buscarPeloCodigo(@PathVariable Long id) {
+	public Cidade buscarPeloId(@PathVariable Integer id) {
 		return cidadeRepository.findOne(id);
 	}
 	
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long id) {
+	public void remover(@PathVariable Integer id) {
 		cidadeRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Cidade> atualizar(@PathVariable Long id, @Valid @RequestBody Cidade cidade){
+	public ResponseEntity<Cidade> atualizar(@PathVariable Integer id, @Valid @RequestBody Cidade cidade){
 		Cidade cidadeSalva = cidadeService.atualizar(id, cidade);
 		return ResponseEntity.ok(cidadeSalva);
 	}

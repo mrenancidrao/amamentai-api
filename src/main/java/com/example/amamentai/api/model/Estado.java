@@ -6,19 +6,14 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -26,12 +21,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "estado", catalog = "amamentai-api", schema = "public")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Estado.findAll", query = "SELECT e FROM Estado e")
-    , @NamedQuery(name = "Estado.findById", query = "SELECT e FROM Estado e WHERE e.id = :id")
-    , @NamedQuery(name = "Estado.findBySigla", query = "SELECT e FROM Estado e WHERE e.sigla = :sigla")
-    , @NamedQuery(name = "Estado.findByNome", query = "SELECT e FROM Estado e WHERE e.nome = :nome")})
 public class Estado implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,9 +35,7 @@ public class Estado implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
-    @OneToMany(mappedBy = "estado")
-    private List<Cidade> cidadeList;
-
+    
     public Estado() {
     }
 
@@ -84,15 +71,6 @@ public class Estado implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    @XmlTransient
-    public List<Cidade> getCidadeList() {
-        return cidadeList;
-    }
-
-    public void setCidadeList(List<Cidade> cidadeList) {
-        this.cidadeList = cidadeList;
     }
 
     @Override

@@ -6,7 +6,7 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,12 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,11 +23,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "bairro", catalog = "amamentai-api", schema = "public")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Bairro.findAll", query = "SELECT b FROM Bairro b")
-    , @NamedQuery(name = "Bairro.findById", query = "SELECT b FROM Bairro b WHERE b.id = :id")
-    , @NamedQuery(name = "Bairro.findByNome", query = "SELECT b FROM Bairro b WHERE b.nome = :nome")})
 public class Bairro implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,8 +33,6 @@ public class Bairro implements Serializable {
     private Integer id;
     @Column(name = "nome")
     private String nome;
-    @OneToMany(mappedBy = "bairro")
-    private List<Pessoa> pessoaList;
     @JoinColumn(name = "cidade", referencedColumnName = "id")
     @ManyToOne
     private Cidade cidade;
@@ -70,15 +58,6 @@ public class Bairro implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    @XmlTransient
-    public List<Pessoa> getPessoaList() {
-        return pessoaList;
-    }
-
-    public void setPessoaList(List<Pessoa> pessoaList) {
-        this.pessoaList = pessoaList;
     }
 
     public Cidade getCidade() {

@@ -7,9 +7,8 @@ package com.example.amamentai.api.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,14 +16,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -32,12 +28,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "status_agenda", catalog = "amamentai-api", schema = "public")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "StatusAgenda.findAll", query = "SELECT s FROM StatusAgenda s")
-    , @NamedQuery(name = "StatusAgenda.findById", query = "SELECT s FROM StatusAgenda s WHERE s.id = :id")
-    , @NamedQuery(name = "StatusAgenda.findByData", query = "SELECT s FROM StatusAgenda s WHERE s.data = :data")
-    , @NamedQuery(name = "StatusAgenda.findByObservacao", query = "SELECT s FROM StatusAgenda s WHERE s.observacao = :observacao")})
 public class StatusAgenda implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,11 +39,10 @@ public class StatusAgenda implements Serializable {
     @Basic(optional = false)
     @Column(name = "data")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
     @Column(name = "observacao")
     private String observacao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusAgenda")
-    private List<MotivoStatusAgenda> motivoStatusAgendaList;
     @JoinColumn(name = "agenda", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Agenda agenda;
@@ -100,15 +89,7 @@ public class StatusAgenda implements Serializable {
         this.observacao = observacao;
     }
 
-    @XmlTransient
-    public List<MotivoStatusAgenda> getMotivoStatusAgendaList() {
-        return motivoStatusAgendaList;
-    }
-
-    public void setMotivoStatusAgendaList(List<MotivoStatusAgenda> motivoStatusAgendaList) {
-        this.motivoStatusAgendaList = motivoStatusAgendaList;
-    }
-
+   
     public Agenda getAgenda() {
         return agenda;
     }

@@ -26,7 +26,7 @@ import com.example.amamentai.api.repository.PessoaRepository;
 import com.example.amamentai.api.service.PessoaService;
 
 @RestController
-@RequestMapping("/pessoas")
+@RequestMapping("/pessoa")
 public class PessoaResource {
 	
 	@Autowired
@@ -53,18 +53,18 @@ public class PessoaResource {
 	}
 
 	@GetMapping("/{id}")
-	public Pessoa buscarPeloId(@PathVariable Long id) {
+	public Pessoa buscarPeloId(@PathVariable Integer id) {
 		return pessoaRepository.findOne(id);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long id) {
+	public void remover(@PathVariable Integer id) {
 		pessoaRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Pessoa> atualizar(@PathVariable Long id, @Valid @RequestBody Pessoa pessoa){
+	public ResponseEntity<Pessoa> atualizar(@PathVariable Integer id, @Valid @RequestBody Pessoa pessoa){
 		Pessoa pessoaSalva = pessoaService.atualizar(id, pessoa);
 		return ResponseEntity.ok(pessoaSalva);
 	}

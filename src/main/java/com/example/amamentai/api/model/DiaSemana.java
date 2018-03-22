@@ -6,20 +6,14 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-import java.util.List;
+
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -27,11 +21,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "dia_semana", catalog = "amamentai-api", schema = "public")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "DiaSemana.findAll", query = "SELECT d FROM DiaSemana d")
-    , @NamedQuery(name = "DiaSemana.findById", query = "SELECT d FROM DiaSemana d WHERE d.id = :id")
-    , @NamedQuery(name = "DiaSemana.findByNome", query = "SELECT d FROM DiaSemana d WHERE d.nome = :nome")})
 public class DiaSemana implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,9 +32,7 @@ public class DiaSemana implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "diaSemana")
-    private List<Rota> rotaList;
-
+   
     public DiaSemana() {
     }
 
@@ -72,15 +59,6 @@ public class DiaSemana implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    @XmlTransient
-    public List<Rota> getRotaList() {
-        return rotaList;
-    }
-
-    public void setRotaList(List<Rota> rotaList) {
-        this.rotaList = rotaList;
     }
 
     @Override

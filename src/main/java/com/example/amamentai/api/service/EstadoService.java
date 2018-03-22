@@ -14,21 +14,21 @@ public class EstadoService {
 	@Autowired
 	EstadoRepository estadoRepository;
 
-	public Estado atualizar(Long id, Estado estado) {
-		Estado estadoSalva = buscarEstadoPeloCodigo(id);
+	public Estado atualizar(Integer id, Estado estado) {
+		Estado estadoSalva = buscarEstadoPeloId(id);
 		
 		BeanUtils.copyProperties(estado, estadoSalva, "id");
 		return estadoRepository.save(estadoSalva);
 	}
 
 
-	public void atualizarPropriedadeAtivo(Long id, Boolean ativo) {
-		Estado estadoSalva = buscarEstadoPeloCodigo(id);
+	public void atualizarPropriedadeAtivo(Integer id, Boolean ativo) {
+		Estado estadoSalva = buscarEstadoPeloId(id);
 		
 		estadoRepository.save(estadoSalva);
 	}
 	
-	public Estado buscarEstadoPeloCodigo(Long id) {
+	public Estado buscarEstadoPeloId(Integer id) {
 		Estado estadoSalva = estadoRepository.findOne(id);
 		if (estadoSalva == null) {
 			throw new EmptyResultDataAccessException(1);

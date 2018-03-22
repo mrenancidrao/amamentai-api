@@ -6,20 +6,14 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-import java.util.List;
+
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -27,11 +21,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "status", catalog = "amamentai-api", schema = "public")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Status.findAll", query = "SELECT s FROM Status s")
-    , @NamedQuery(name = "Status.findById", query = "SELECT s FROM Status s WHERE s.id = :id")
-    , @NamedQuery(name = "Status.findByNome", query = "SELECT s FROM Status s WHERE s.nome = :nome")})
 public class Status implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,9 +31,7 @@ public class Status implements Serializable {
     private Integer id;
     @Column(name = "nome")
     private String nome;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "status")
-    private List<StatusAgenda> statusAgendaList;
-
+    
     public Status() {
     }
 
@@ -68,14 +55,7 @@ public class Status implements Serializable {
         this.nome = nome;
     }
 
-    @XmlTransient
-    public List<StatusAgenda> getStatusAgendaList() {
-        return statusAgendaList;
-    }
-
-    public void setStatusAgendaList(List<StatusAgenda> statusAgendaList) {
-        this.statusAgendaList = statusAgendaList;
-    }
+    
 
     @Override
     public int hashCode() {

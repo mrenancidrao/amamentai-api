@@ -14,21 +14,21 @@ public class BairroService {
 	@Autowired
 	BairroRepository bairroRepository;
 
-	public Bairro atualizar(Long id, Bairro bairro) {
-		Bairro bairroSalva = buscarBairroPeloCodigo(id);
+	public Bairro atualizar(Integer id, Bairro bairro) {
+		Bairro bairroSalva = buscarBairroPeloId(id);
 		
 		BeanUtils.copyProperties(bairro, bairroSalva, "id");
 		return bairroRepository.save(bairroSalva);
 	}
 
 
-	public void atualizarPropriedadeAtivo(Long id, Boolean ativo) {
-		Bairro bairroSalva = buscarBairroPeloCodigo(id);
+	public void atualizarPropriedadeAtivo(Integer id, Boolean ativo) {
+		Bairro bairroSalva = buscarBairroPeloId(id);
 		
 		bairroRepository.save(bairroSalva);
 	}
 	
-	public Bairro buscarBairroPeloCodigo(Long id) {
+	public Bairro buscarBairroPeloId(Integer id) {
 		Bairro bairroSalva = bairroRepository.findOne(id);
 		if (bairroSalva == null) {
 			throw new EmptyResultDataAccessException(1);

@@ -1,5 +1,6 @@
 package com.example.amamentai.api.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +26,7 @@ import com.example.amamentai.api.repository.BairroRepository;
 import com.example.amamentai.api.service.BairroService;
 
 @RestController
-@RequestMapping("/bairros")
+@RequestMapping("/bairro")
 public class BairroResource {
 	
 	@Autowired
@@ -51,20 +52,35 @@ public class BairroResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(bairroSalva);
 	}
 	
+	@PostMapping("/criarLote")
+	public ResponseEntity<List<Bairro>> criarBairro(@Valid @RequestBody List<Bairro> bairros, HttpServletResponse response) {
+		
+		List<Bairro> bairrosSalvos = new ArrayList<Bairro>();
+		
+		for (Bairro tmp : bairros) {
+			
+			Bairro bairroSalva = bairroRepository.save(tmp);
+			bairrosSalvos.add(bairroSalva);
+		}
+		
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(bairrosSalvos);
+	}
+	
 	@GetMapping("/{id}")
-	public Bairro buscarPeloCodigo(@PathVariable Long id) {
+	public Bairro buscarPeloId(@PathVariable Integer id) {
 		return bairroRepository.findOne(id);
 	}
 	
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long id) {
+	public void remover(@PathVariable Integer id) {
 		bairroRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Bairro> atualizar(@PathVariable Long id, @Valid @RequestBody Bairro bairro){
+	public ResponseEntity<Bairro> atualizar(@PathVariable Integer id, @Valid @RequestBody Bairro bairro){
 		Bairro bairroSalva = bairroService.atualizar(id, bairro);
 		return ResponseEntity.ok(bairroSalva);
 	}

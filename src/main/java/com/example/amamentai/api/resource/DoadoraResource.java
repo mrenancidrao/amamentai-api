@@ -26,7 +26,7 @@ import com.example.amamentai.api.repository.DoadoraRepository;
 import com.example.amamentai.api.service.DoadoraService;
 
 @RestController
-@RequestMapping("/doadoras")
+@RequestMapping("/doadora")
 public class DoadoraResource {
 	
 	@Autowired
@@ -53,18 +53,18 @@ public class DoadoraResource {
 	}
 
 	@GetMapping("/{id}")
-	public Doadora buscarPeloId(@PathVariable Long id) {
+	public Doadora buscarPeloId(@PathVariable Integer id) {
 		return doadoraRepository.findOne(id);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long id) {
+	public void remover(@PathVariable Integer id) {
 		doadoraRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Doadora> atualizar(@PathVariable Long id, @Valid @RequestBody Doadora doadora){
+	public ResponseEntity<Doadora> atualizar(@PathVariable Integer id, @Valid @RequestBody Doadora doadora){
 		Doadora doadoraSalva = doadoraService.atualizar(id, doadora);
 		return ResponseEntity.ok(doadoraSalva);
 	}

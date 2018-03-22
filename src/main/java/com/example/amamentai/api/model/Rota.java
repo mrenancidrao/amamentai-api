@@ -6,9 +6,8 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-import java.util.List;
+
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,12 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,10 +23,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "rota", catalog = "amamentai-api", schema = "public")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Rota.findAll", query = "SELECT r FROM Rota r")
-    , @NamedQuery(name = "Rota.findById", query = "SELECT r FROM Rota r WHERE r.id = :id")})
 public class Rota implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,8 +31,6 @@ public class Rota implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rota")
-    private List<Agenda> agendaList;
     @JoinColumn(name = "dia_semana", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DiaSemana diaSemana;
@@ -65,15 +53,7 @@ public class Rota implements Serializable {
         this.id = id;
     }
 
-    @XmlTransient
-    public List<Agenda> getAgendaList() {
-        return agendaList;
-    }
-
-    public void setAgendaList(List<Agenda> agendaList) {
-        this.agendaList = agendaList;
-    }
-
+    
     public DiaSemana getDiaSemana() {
         return diaSemana;
     }

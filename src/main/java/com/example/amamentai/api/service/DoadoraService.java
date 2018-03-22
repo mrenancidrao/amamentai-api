@@ -14,21 +14,21 @@ public class DoadoraService {
 	@Autowired
 	DoadoraRepository doadoraRepository;
 
-	public Doadora atualizar(Long id, Doadora doadora) {
-		Doadora doadoraSalva = buscarDoadoraPeloCodigo(id);
+	public Doadora atualizar(Integer id, Doadora doadora) {
+		Doadora doadoraSalva = buscarDoadoraPeloId(id);
 		
 		BeanUtils.copyProperties(doadora, doadoraSalva, "id");
 		return doadoraRepository.save(doadoraSalva);
 	}
 
 
-	public void atualizarPropriedadeAtivo(Long id, Boolean ativo) {
-		Doadora doadoraSalva = buscarDoadoraPeloCodigo(id);
+	public void atualizarPropriedadeAtivo(Integer id, Boolean ativo) {
+		Doadora doadoraSalva = buscarDoadoraPeloId(id);
 		
 		doadoraRepository.save(doadoraSalva);
 	}
 	
-	public Doadora buscarDoadoraPeloCodigo(Long id) {
+	public Doadora buscarDoadoraPeloId(Integer id) {
 		Doadora doadoraSalva = doadoraRepository.findOne(id);
 		if (doadoraSalva == null) {
 			throw new EmptyResultDataAccessException(1);

@@ -6,9 +6,8 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-import java.util.List;
+
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,12 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,13 +23,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "usuario", catalog = "amamentai-api", schema = "public")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
-    , @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id")
-    , @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")
-    , @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")
-    , @NamedQuery(name = "Usuario.findByAtivo", query = "SELECT u FROM Usuario u WHERE u.ativo = :ativo")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,10 +39,6 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "ativo")
     private boolean ativo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<Agenda> agendaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<StatusAgenda> statusAgendaList;
     @JoinColumn(name = "pessoa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pessoa pessoa;
@@ -106,24 +89,6 @@ public class Usuario implements Serializable {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
-    }
-
-    @XmlTransient
-    public List<Agenda> getAgendaList() {
-        return agendaList;
-    }
-
-    public void setAgendaList(List<Agenda> agendaList) {
-        this.agendaList = agendaList;
-    }
-
-    @XmlTransient
-    public List<StatusAgenda> getStatusAgendaList() {
-        return statusAgendaList;
-    }
-
-    public void setStatusAgendaList(List<StatusAgenda> statusAgendaList) {
-        this.statusAgendaList = statusAgendaList;
     }
 
     public Pessoa getPessoa() {

@@ -8,9 +8,9 @@ public class RecursoCriadoEvent extends ApplicationEvent {
 
 	private static final long serialVersionUID = 1L;
 	private HttpServletResponse response;
-	private Long id;
+	private Integer id;
 	
-	public RecursoCriadoEvent(Object source, HttpServletResponse response, Long id) {
+	public RecursoCriadoEvent(Object source, HttpServletResponse response, Integer id) {
 		super(source);
 		this.response = response;
 		this.id = id;
@@ -20,7 +20,7 @@ public class RecursoCriadoEvent extends ApplicationEvent {
 		return response;
 	}
 
-	public Long getCodigo() {
+	public Integer getId() {
 		return id;
 	}
 

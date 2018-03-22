@@ -14,21 +14,21 @@ public class PessoaService {
 	@Autowired
 	PessoaRepository pessoaRepository;
 
-	public Pessoa atualizar(Long id, Pessoa pessoa) {
-		Pessoa pessoaSalva = buscarPessoaPeloCodigo(id);
+	public Pessoa atualizar(Integer id, Pessoa pessoa) {
+		Pessoa pessoaSalva = buscarPessoaPeloId(id);
 		
 		BeanUtils.copyProperties(pessoa, pessoaSalva, "id");
 		return pessoaRepository.save(pessoaSalva);
 	}
 
 
-	public void atualizarPropriedadeAtivo(Long id, Boolean ativo) {
-		Pessoa pessoaSalva = buscarPessoaPeloCodigo(id);
+	public void atualizarPropriedadeAtivo(Integer id, Boolean ativo) {
+		Pessoa pessoaSalva = buscarPessoaPeloId(id);
 		
 		pessoaRepository.save(pessoaSalva);
 	}
 	
-	public Pessoa buscarPessoaPeloCodigo(Long id) {
+	public Pessoa buscarPessoaPeloId(Integer id) {
 		Pessoa pessoaSalva = pessoaRepository.findOne(id);
 		if (pessoaSalva == null) {
 			throw new EmptyResultDataAccessException(1);

@@ -6,9 +6,8 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
-import java.util.List;
+
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,12 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,11 +23,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "doadora", catalog = "amamentai-api", schema = "public")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Doadora.findAll", query = "SELECT d FROM Doadora d")
-    , @NamedQuery(name = "Doadora.findById", query = "SELECT d FROM Doadora d WHERE d.id = :id")
-    , @NamedQuery(name = "Doadora.findByAtivo", query = "SELECT d FROM Doadora d WHERE d.ativo = :ativo")})
 public class Doadora implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,11 +36,8 @@ public class Doadora implements Serializable {
     @JoinColumn(name = "pessoa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pessoa pessoa;
-    @OneToMany(mappedBy = "doadora")
-    private List<Doacao> doacaoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doadora")
-    private List<FilhoDoadora> filhoDoadoraList;
-
+    
+   
     public Doadora() {
     }
 
@@ -83,24 +69,9 @@ public class Doadora implements Serializable {
         this.pessoa = pessoa;
     }
 
-    @XmlTransient
-    public List<Doacao> getDoacaoList() {
-        return doacaoList;
-    }
+ 
 
-    public void setDoacaoList(List<Doacao> doacaoList) {
-        this.doacaoList = doacaoList;
-    }
-
-    @XmlTransient
-    public List<FilhoDoadora> getFilhoDoadoraList() {
-        return filhoDoadoraList;
-    }
-
-    public void setFilhoDoadoraList(List<FilhoDoadora> filhoDoadoraList) {
-        this.filhoDoadoraList = filhoDoadoraList;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
