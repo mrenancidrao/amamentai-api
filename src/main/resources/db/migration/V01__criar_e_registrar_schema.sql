@@ -1,4 +1,47 @@
+--
+-- PostgreSQL database dump
+--
 
+-- Dumped from database version 9.5.11
+-- Dumped by pg_dump version 9.5.10
+
+-- Started on 2018-03-26 15:47:58 BRT
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 12395)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2425 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 182 (class 1259 OID 25089)
+-- Name: agenda; Type: TABLE; Schema: public; Owner: postgres
+--
 
 CREATE TABLE agenda (
     id integer NOT NULL,
@@ -12,7 +55,7 @@ CREATE TABLE agenda (
 ALTER TABLE agenda OWNER TO postgres;
 
 --
--- TOC entry 186 (class 1259 OID 32792)
+-- TOC entry 183 (class 1259 OID 25092)
 -- Name: agenda_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -27,8 +70,8 @@ CREATE SEQUENCE agenda_id_seq
 ALTER TABLE agenda_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2400 (class 0 OID 0)
--- Dependencies: 186
+-- TOC entry 2426 (class 0 OID 0)
+-- Dependencies: 183
 -- Name: agenda_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -36,7 +79,7 @@ ALTER SEQUENCE agenda_id_seq OWNED BY agenda.id;
 
 
 --
--- TOC entry 187 (class 1259 OID 32794)
+-- TOC entry 184 (class 1259 OID 25094)
 -- Name: bairro; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -50,7 +93,7 @@ CREATE TABLE bairro (
 ALTER TABLE bairro OWNER TO postgres;
 
 --
--- TOC entry 188 (class 1259 OID 32800)
+-- TOC entry 185 (class 1259 OID 25100)
 -- Name: bairro_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -65,8 +108,8 @@ CREATE SEQUENCE bairro_id_seq
 ALTER TABLE bairro_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2401 (class 0 OID 0)
--- Dependencies: 188
+-- TOC entry 2427 (class 0 OID 0)
+-- Dependencies: 185
 -- Name: bairro_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -74,7 +117,7 @@ ALTER SEQUENCE bairro_id_seq OWNED BY bairro.id;
 
 
 --
--- TOC entry 222 (class 1259 OID 40984)
+-- TOC entry 186 (class 1259 OID 25102)
 -- Name: banco; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -93,7 +136,7 @@ CREATE TABLE banco (
 ALTER TABLE banco OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 40982)
+-- TOC entry 187 (class 1259 OID 25108)
 -- Name: banco_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -108,8 +151,8 @@ CREATE SEQUENCE banco_id_seq
 ALTER TABLE banco_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2402 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 2428 (class 0 OID 0)
+-- Dependencies: 187
 -- Name: banco_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -117,7 +160,7 @@ ALTER SEQUENCE banco_id_seq OWNED BY banco.id;
 
 
 --
--- TOC entry 189 (class 1259 OID 32802)
+-- TOC entry 188 (class 1259 OID 25110)
 -- Name: cidade; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -131,7 +174,7 @@ CREATE TABLE cidade (
 ALTER TABLE cidade OWNER TO postgres;
 
 --
--- TOC entry 190 (class 1259 OID 32808)
+-- TOC entry 189 (class 1259 OID 25116)
 -- Name: cidade_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -146,8 +189,8 @@ CREATE SEQUENCE cidade_id_seq
 ALTER TABLE cidade_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2403 (class 0 OID 0)
--- Dependencies: 190
+-- TOC entry 2429 (class 0 OID 0)
+-- Dependencies: 189
 -- Name: cidade_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -155,7 +198,7 @@ ALTER SEQUENCE cidade_id_seq OWNED BY cidade.id;
 
 
 --
--- TOC entry 191 (class 1259 OID 32810)
+-- TOC entry 190 (class 1259 OID 25118)
 -- Name: dia_semana; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -168,7 +211,7 @@ CREATE TABLE dia_semana (
 ALTER TABLE dia_semana OWNER TO postgres;
 
 --
--- TOC entry 192 (class 1259 OID 32816)
+-- TOC entry 191 (class 1259 OID 25124)
 -- Name: dia_semana_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -183,8 +226,8 @@ CREATE SEQUENCE dia_semana_id_seq
 ALTER TABLE dia_semana_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2404 (class 0 OID 0)
--- Dependencies: 192
+-- TOC entry 2430 (class 0 OID 0)
+-- Dependencies: 191
 -- Name: dia_semana_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -192,7 +235,7 @@ ALTER SEQUENCE dia_semana_id_seq OWNED BY dia_semana.id;
 
 
 --
--- TOC entry 193 (class 1259 OID 32818)
+-- TOC entry 192 (class 1259 OID 25126)
 -- Name: doacao; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -206,7 +249,7 @@ CREATE TABLE doacao (
 ALTER TABLE doacao OWNER TO postgres;
 
 --
--- TOC entry 194 (class 1259 OID 32821)
+-- TOC entry 193 (class 1259 OID 25129)
 -- Name: doacao_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -221,8 +264,8 @@ CREATE SEQUENCE doacao_id_seq
 ALTER TABLE doacao_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2405 (class 0 OID 0)
--- Dependencies: 194
+-- TOC entry 2431 (class 0 OID 0)
+-- Dependencies: 193
 -- Name: doacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -230,7 +273,7 @@ ALTER SEQUENCE doacao_id_seq OWNED BY doacao.id;
 
 
 --
--- TOC entry 195 (class 1259 OID 32823)
+-- TOC entry 194 (class 1259 OID 25131)
 -- Name: doadora; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -244,7 +287,7 @@ CREATE TABLE doadora (
 ALTER TABLE doadora OWNER TO postgres;
 
 --
--- TOC entry 196 (class 1259 OID 32826)
+-- TOC entry 195 (class 1259 OID 25134)
 -- Name: doadora_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -259,8 +302,8 @@ CREATE SEQUENCE doadora_id_seq
 ALTER TABLE doadora_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2406 (class 0 OID 0)
--- Dependencies: 196
+-- TOC entry 2432 (class 0 OID 0)
+-- Dependencies: 195
 -- Name: doadora_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -268,7 +311,7 @@ ALTER SEQUENCE doadora_id_seq OWNED BY doadora.id;
 
 
 --
--- TOC entry 227 (class 1259 OID 49207)
+-- TOC entry 196 (class 1259 OID 25136)
 -- Name: doadora_parto; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -283,7 +326,7 @@ CREATE TABLE doadora_parto (
 ALTER TABLE doadora_parto OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 49205)
+-- TOC entry 197 (class 1259 OID 25142)
 -- Name: doadora_parto_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -298,8 +341,8 @@ CREATE SEQUENCE doadora_parto_id_seq
 ALTER TABLE doadora_parto_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2407 (class 0 OID 0)
--- Dependencies: 226
+-- TOC entry 2433 (class 0 OID 0)
+-- Dependencies: 197
 -- Name: doadora_parto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -307,7 +350,7 @@ ALTER SEQUENCE doadora_parto_id_seq OWNED BY doadora_parto.id;
 
 
 --
--- TOC entry 220 (class 1259 OID 33097)
+-- TOC entry 198 (class 1259 OID 25144)
 -- Name: estado; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -321,7 +364,7 @@ CREATE TABLE estado (
 ALTER TABLE estado OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 33095)
+-- TOC entry 199 (class 1259 OID 25150)
 -- Name: estado_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -336,8 +379,8 @@ CREATE SEQUENCE estado_id_seq
 ALTER TABLE estado_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2408 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 2434 (class 0 OID 0)
+-- Dependencies: 199
 -- Name: estado_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -345,7 +388,7 @@ ALTER SEQUENCE estado_id_seq OWNED BY estado.id;
 
 
 --
--- TOC entry 197 (class 1259 OID 32838)
+-- TOC entry 200 (class 1259 OID 25152)
 -- Name: funcionario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -359,7 +402,7 @@ CREATE TABLE funcionario (
 ALTER TABLE funcionario OWNER TO postgres;
 
 --
--- TOC entry 198 (class 1259 OID 32841)
+-- TOC entry 201 (class 1259 OID 25155)
 -- Name: funcionario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -374,8 +417,8 @@ CREATE SEQUENCE funcionario_id_seq
 ALTER TABLE funcionario_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2409 (class 0 OID 0)
--- Dependencies: 198
+-- TOC entry 2435 (class 0 OID 0)
+-- Dependencies: 201
 -- Name: funcionario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -383,7 +426,7 @@ ALTER SEQUENCE funcionario_id_seq OWNED BY funcionario.id;
 
 
 --
--- TOC entry 199 (class 1259 OID 32843)
+-- TOC entry 202 (class 1259 OID 25157)
 -- Name: horario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -396,7 +439,7 @@ CREATE TABLE horario (
 ALTER TABLE horario OWNER TO postgres;
 
 --
--- TOC entry 200 (class 1259 OID 32849)
+-- TOC entry 203 (class 1259 OID 25163)
 -- Name: horario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -411,8 +454,8 @@ CREATE SEQUENCE horario_id_seq
 ALTER TABLE horario_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2410 (class 0 OID 0)
--- Dependencies: 200
+-- TOC entry 2436 (class 0 OID 0)
+-- Dependencies: 203
 -- Name: horario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -420,7 +463,7 @@ ALTER SEQUENCE horario_id_seq OWNED BY horario.id;
 
 
 --
--- TOC entry 201 (class 1259 OID 32851)
+-- TOC entry 204 (class 1259 OID 25165)
 -- Name: motivo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -433,7 +476,7 @@ CREATE TABLE motivo (
 ALTER TABLE motivo OWNER TO postgres;
 
 --
--- TOC entry 202 (class 1259 OID 32857)
+-- TOC entry 205 (class 1259 OID 25171)
 -- Name: motivo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -448,8 +491,8 @@ CREATE SEQUENCE motivo_id_seq
 ALTER TABLE motivo_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2411 (class 0 OID 0)
--- Dependencies: 202
+-- TOC entry 2437 (class 0 OID 0)
+-- Dependencies: 205
 -- Name: motivo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -457,7 +500,7 @@ ALTER SEQUENCE motivo_id_seq OWNED BY motivo.id;
 
 
 --
--- TOC entry 203 (class 1259 OID 32859)
+-- TOC entry 206 (class 1259 OID 25173)
 -- Name: motivo_status_agenda; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -471,7 +514,7 @@ CREATE TABLE motivo_status_agenda (
 ALTER TABLE motivo_status_agenda OWNER TO postgres;
 
 --
--- TOC entry 204 (class 1259 OID 32862)
+-- TOC entry 207 (class 1259 OID 25176)
 -- Name: motivo_status_agenda_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -486,8 +529,8 @@ CREATE SEQUENCE motivo_status_agenda_id_seq
 ALTER TABLE motivo_status_agenda_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2412 (class 0 OID 0)
--- Dependencies: 204
+-- TOC entry 2438 (class 0 OID 0)
+-- Dependencies: 207
 -- Name: motivo_status_agenda_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -495,7 +538,7 @@ ALTER SEQUENCE motivo_status_agenda_id_seq OWNED BY motivo_status_agenda.id;
 
 
 --
--- TOC entry 205 (class 1259 OID 32864)
+-- TOC entry 208 (class 1259 OID 25178)
 -- Name: objetivo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -508,8 +551,8 @@ CREATE TABLE objetivo (
 ALTER TABLE objetivo OWNER TO postgres;
 
 --
--- TOC entry 2413 (class 0 OID 0)
--- Dependencies: 205
+-- TOC entry 2439 (class 0 OID 0)
+-- Dependencies: 208
 -- Name: TABLE objetivo; Type: COMMENT; Schema: public; Owner: postgres
 --
 
@@ -517,7 +560,7 @@ COMMENT ON TABLE objetivo IS '--INFORMAR O OBJETIVO SE É ENVIO DE MATERIAL OU C
 
 
 --
--- TOC entry 206 (class 1259 OID 32870)
+-- TOC entry 209 (class 1259 OID 25184)
 -- Name: objetivo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -532,8 +575,8 @@ CREATE SEQUENCE objetivo_id_seq
 ALTER TABLE objetivo_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2414 (class 0 OID 0)
--- Dependencies: 206
+-- TOC entry 2440 (class 0 OID 0)
+-- Dependencies: 209
 -- Name: objetivo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -541,7 +584,7 @@ ALTER SEQUENCE objetivo_id_seq OWNED BY objetivo.id;
 
 
 --
--- TOC entry 223 (class 1259 OID 49173)
+-- TOC entry 210 (class 1259 OID 25186)
 -- Name: permissao; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -554,7 +597,7 @@ CREATE TABLE permissao (
 ALTER TABLE permissao OWNER TO postgres;
 
 --
--- TOC entry 207 (class 1259 OID 32872)
+-- TOC entry 211 (class 1259 OID 25192)
 -- Name: pessoa; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -572,9 +615,9 @@ CREATE TABLE pessoa (
 ALTER TABLE pessoa OWNER TO postgres;
 
 --
--- TOC entry 208 (class 1259 OID 32878)
+-- TOC entry 212 (class 1259 OID 25198)
 -- Name: pessoa_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---p
+--
 
 CREATE SEQUENCE pessoa_id_seq
     START WITH 1
@@ -587,8 +630,8 @@ CREATE SEQUENCE pessoa_id_seq
 ALTER TABLE pessoa_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2415 (class 0 OID 0)
--- Dependencies: 208
+-- TOC entry 2441 (class 0 OID 0)
+-- Dependencies: 212
 -- Name: pessoa_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -596,7 +639,7 @@ ALTER SEQUENCE pessoa_id_seq OWNED BY pessoa.id;
 
 
 --
--- TOC entry 209 (class 1259 OID 32880)
+-- TOC entry 213 (class 1259 OID 25200)
 -- Name: rota; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -610,7 +653,7 @@ CREATE TABLE rota (
 ALTER TABLE rota OWNER TO postgres;
 
 --
--- TOC entry 210 (class 1259 OID 32883)
+-- TOC entry 214 (class 1259 OID 25203)
 -- Name: rota_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -625,8 +668,8 @@ CREATE SEQUENCE rota_id_seq
 ALTER TABLE rota_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2416 (class 0 OID 0)
--- Dependencies: 210
+-- TOC entry 2442 (class 0 OID 0)
+-- Dependencies: 214
 -- Name: rota_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -634,7 +677,29 @@ ALTER SEQUENCE rota_id_seq OWNED BY rota.id;
 
 
 --
--- TOC entry 211 (class 1259 OID 32885)
+-- TOC entry 181 (class 1259 OID 25077)
+-- Name: schema_version; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE schema_version (
+    version_rank integer NOT NULL,
+    installed_rank integer NOT NULL,
+    version character varying(50) NOT NULL,
+    description character varying(200) NOT NULL,
+    type character varying(20) NOT NULL,
+    script character varying(1000) NOT NULL,
+    checksum integer,
+    installed_by character varying(100) NOT NULL,
+    installed_on timestamp without time zone DEFAULT now() NOT NULL,
+    execution_time integer NOT NULL,
+    success boolean NOT NULL
+);
+
+
+ALTER TABLE schema_version OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 25205)
 -- Name: status; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -647,7 +712,7 @@ CREATE TABLE status (
 ALTER TABLE status OWNER TO postgres;
 
 --
--- TOC entry 212 (class 1259 OID 32891)
+-- TOC entry 216 (class 1259 OID 25211)
 -- Name: status_agenda; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -664,7 +729,7 @@ CREATE TABLE status_agenda (
 ALTER TABLE status_agenda OWNER TO postgres;
 
 --
--- TOC entry 213 (class 1259 OID 32897)
+-- TOC entry 217 (class 1259 OID 25217)
 -- Name: status_agenda_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -679,8 +744,8 @@ CREATE SEQUENCE status_agenda_id_seq
 ALTER TABLE status_agenda_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2417 (class 0 OID 0)
--- Dependencies: 213
+-- TOC entry 2443 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: status_agenda_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -688,7 +753,7 @@ ALTER SEQUENCE status_agenda_id_seq OWNED BY status_agenda.id;
 
 
 --
--- TOC entry 214 (class 1259 OID 32899)
+-- TOC entry 218 (class 1259 OID 25219)
 -- Name: status_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -703,8 +768,8 @@ CREATE SEQUENCE status_id_seq
 ALTER TABLE status_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2418 (class 0 OID 0)
--- Dependencies: 214
+-- TOC entry 2444 (class 0 OID 0)
+-- Dependencies: 218
 -- Name: status_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -712,7 +777,7 @@ ALTER SEQUENCE status_id_seq OWNED BY status.id;
 
 
 --
--- TOC entry 215 (class 1259 OID 32901)
+-- TOC entry 219 (class 1259 OID 25221)
 -- Name: tipo_usuario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -725,7 +790,7 @@ CREATE TABLE tipo_usuario (
 ALTER TABLE tipo_usuario OWNER TO postgres;
 
 --
--- TOC entry 216 (class 1259 OID 32907)
+-- TOC entry 220 (class 1259 OID 25227)
 -- Name: tipo_usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -740,8 +805,8 @@ CREATE SEQUENCE tipo_usuario_id_seq
 ALTER TABLE tipo_usuario_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2419 (class 0 OID 0)
--- Dependencies: 216
+-- TOC entry 2445 (class 0 OID 0)
+-- Dependencies: 220
 -- Name: tipo_usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -749,7 +814,7 @@ ALTER SEQUENCE tipo_usuario_id_seq OWNED BY tipo_usuario.id;
 
 
 --
--- TOC entry 225 (class 1259 OID 49183)
+-- TOC entry 221 (class 1259 OID 25229)
 -- Name: tipo_usuario_permissao; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -763,7 +828,7 @@ CREATE TABLE tipo_usuario_permissao (
 ALTER TABLE tipo_usuario_permissao OWNER TO postgres;
 
 --
--- TOC entry 224 (class 1259 OID 49181)
+-- TOC entry 222 (class 1259 OID 25232)
 -- Name: tipo_usuario_permissao_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -778,8 +843,8 @@ CREATE SEQUENCE tipo_usuario_permissao_id_seq
 ALTER TABLE tipo_usuario_permissao_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2420 (class 0 OID 0)
--- Dependencies: 224
+-- TOC entry 2446 (class 0 OID 0)
+-- Dependencies: 222
 -- Name: tipo_usuario_permissao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -787,7 +852,7 @@ ALTER SEQUENCE tipo_usuario_permissao_id_seq OWNED BY tipo_usuario_permissao.id;
 
 
 --
--- TOC entry 217 (class 1259 OID 32909)
+-- TOC entry 223 (class 1259 OID 25234)
 -- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -804,7 +869,7 @@ CREATE TABLE usuario (
 ALTER TABLE usuario OWNER TO postgres;
 
 --
--- TOC entry 218 (class 1259 OID 32915)
+-- TOC entry 224 (class 1259 OID 25240)
 -- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -819,8 +884,8 @@ CREATE SEQUENCE usuario_id_seq
 ALTER TABLE usuario_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2421 (class 0 OID 0)
--- Dependencies: 218
+-- TOC entry 2447 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -828,7 +893,7 @@ ALTER SEQUENCE usuario_id_seq OWNED BY usuario.id;
 
 
 --
--- TOC entry 228 (class 1259 OID 49266)
+-- TOC entry 225 (class 1259 OID 25242)
 -- Name: v_agenda; Type: VIEW; Schema: public; Owner: postgres
 --
 
@@ -863,176 +928,176 @@ CREATE VIEW v_agenda AS
 ALTER TABLE v_agenda OWNER TO postgres;
 
 --
--- TOC entry 2144 (class 2604 OID 32917)
--- Name: agenda id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2168 (class 2604 OID 25247)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY agenda ALTER COLUMN id SET DEFAULT nextval('agenda_id_seq'::regclass);
 
 
 --
--- TOC entry 2145 (class 2604 OID 32918)
--- Name: bairro id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2169 (class 2604 OID 25248)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY bairro ALTER COLUMN id SET DEFAULT nextval('bairro_id_seq'::regclass);
 
 
 --
--- TOC entry 2162 (class 2604 OID 40987)
--- Name: banco id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2170 (class 2604 OID 25249)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY banco ALTER COLUMN id SET DEFAULT nextval('banco_id_seq'::regclass);
 
 
 --
--- TOC entry 2146 (class 2604 OID 32919)
--- Name: cidade id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2171 (class 2604 OID 25250)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY cidade ALTER COLUMN id SET DEFAULT nextval('cidade_id_seq'::regclass);
 
 
 --
--- TOC entry 2147 (class 2604 OID 32920)
--- Name: dia_semana id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2172 (class 2604 OID 25251)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY dia_semana ALTER COLUMN id SET DEFAULT nextval('dia_semana_id_seq'::regclass);
 
 
 --
--- TOC entry 2148 (class 2604 OID 32921)
--- Name: doacao id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2173 (class 2604 OID 25252)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY doacao ALTER COLUMN id SET DEFAULT nextval('doacao_id_seq'::regclass);
 
 
 --
--- TOC entry 2149 (class 2604 OID 32922)
--- Name: doadora id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2174 (class 2604 OID 25253)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY doadora ALTER COLUMN id SET DEFAULT nextval('doadora_id_seq'::regclass);
 
 
 --
--- TOC entry 2164 (class 2604 OID 49210)
--- Name: doadora_parto id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2175 (class 2604 OID 25254)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY doadora_parto ALTER COLUMN id SET DEFAULT nextval('doadora_parto_id_seq'::regclass);
 
 
 --
--- TOC entry 2161 (class 2604 OID 33100)
--- Name: estado id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2176 (class 2604 OID 25255)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY estado ALTER COLUMN id SET DEFAULT nextval('estado_id_seq'::regclass);
 
 
 --
--- TOC entry 2150 (class 2604 OID 32925)
--- Name: funcionario id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2177 (class 2604 OID 25256)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY funcionario ALTER COLUMN id SET DEFAULT nextval('funcionario_id_seq'::regclass);
 
 
 --
--- TOC entry 2151 (class 2604 OID 32926)
--- Name: horario id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2178 (class 2604 OID 25257)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY horario ALTER COLUMN id SET DEFAULT nextval('horario_id_seq'::regclass);
 
 
 --
--- TOC entry 2152 (class 2604 OID 32927)
--- Name: motivo id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2179 (class 2604 OID 25258)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY motivo ALTER COLUMN id SET DEFAULT nextval('motivo_id_seq'::regclass);
 
 
 --
--- TOC entry 2153 (class 2604 OID 32928)
--- Name: motivo_status_agenda id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2180 (class 2604 OID 25259)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY motivo_status_agenda ALTER COLUMN id SET DEFAULT nextval('motivo_status_agenda_id_seq'::regclass);
 
 
 --
--- TOC entry 2154 (class 2604 OID 32929)
--- Name: objetivo id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2181 (class 2604 OID 25260)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY objetivo ALTER COLUMN id SET DEFAULT nextval('objetivo_id_seq'::regclass);
 
 
 --
--- TOC entry 2155 (class 2604 OID 32930)
--- Name: pessoa id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2182 (class 2604 OID 25261)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY pessoa ALTER COLUMN id SET DEFAULT nextval('pessoa_id_seq'::regclass);
 
 
 --
--- TOC entry 2156 (class 2604 OID 32931)
--- Name: rota id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2183 (class 2604 OID 25262)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY rota ALTER COLUMN id SET DEFAULT nextval('rota_id_seq'::regclass);
 
 
 --
--- TOC entry 2157 (class 2604 OID 32932)
--- Name: status id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2184 (class 2604 OID 25263)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY status ALTER COLUMN id SET DEFAULT nextval('status_id_seq'::regclass);
 
 
 --
--- TOC entry 2158 (class 2604 OID 32933)
--- Name: status_agenda id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2185 (class 2604 OID 25264)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY status_agenda ALTER COLUMN id SET DEFAULT nextval('status_agenda_id_seq'::regclass);
 
 
 --
--- TOC entry 2159 (class 2604 OID 32934)
--- Name: tipo_usuario id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2186 (class 2604 OID 25265)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY tipo_usuario ALTER COLUMN id SET DEFAULT nextval('tipo_usuario_id_seq'::regclass);
 
 
 --
--- TOC entry 2163 (class 2604 OID 49186)
--- Name: tipo_usuario_permissao id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2187 (class 2604 OID 25266)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY tipo_usuario_permissao ALTER COLUMN id SET DEFAULT nextval('tipo_usuario_permissao_id_seq'::regclass);
 
 
 --
--- TOC entry 2160 (class 2604 OID 32935)
--- Name: usuario id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2188 (class 2604 OID 25267)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY usuario ALTER COLUMN id SET DEFAULT nextval('usuario_id_seq'::regclass);
 
 
 --
--- TOC entry 2350 (class 0 OID 32789)
--- Dependencies: 185
+-- TOC entry 2377 (class 0 OID 25089)
+-- Dependencies: 182
 -- Data for Name: agenda; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1041,8 +1106,8 @@ INSERT INTO agenda (id, data, objetivo, rota, doacao) VALUES (5, '2018-03-25', 1
 
 
 --
--- TOC entry 2422 (class 0 OID 0)
--- Dependencies: 186
+-- TOC entry 2448 (class 0 OID 0)
+-- Dependencies: 183
 -- Name: agenda_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1050,8 +1115,8 @@ SELECT pg_catalog.setval('agenda_id_seq', 5, true);
 
 
 --
--- TOC entry 2352 (class 0 OID 32794)
--- Dependencies: 187
+-- TOC entry 2379 (class 0 OID 25094)
+-- Dependencies: 184
 -- Data for Name: bairro; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1175,8 +1240,8 @@ INSERT INTO bairro (id, nome, cidade) VALUES (118, 'CENTRO', 756);
 
 
 --
--- TOC entry 2423 (class 0 OID 0)
--- Dependencies: 188
+-- TOC entry 2449 (class 0 OID 0)
+-- Dependencies: 185
 -- Name: bairro_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1184,8 +1249,8 @@ SELECT pg_catalog.setval('bairro_id_seq', 118, true);
 
 
 --
--- TOC entry 2387 (class 0 OID 40984)
--- Dependencies: 222
+-- TOC entry 2381 (class 0 OID 25102)
+-- Dependencies: 186
 -- Data for Name: banco; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1196,8 +1261,8 @@ INSERT INTO banco (id, nome, logradouro, numero, complemento, bairro, telefone, 
 
 
 --
--- TOC entry 2424 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 2450 (class 0 OID 0)
+-- Dependencies: 187
 -- Name: banco_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1205,8 +1270,8 @@ SELECT pg_catalog.setval('banco_id_seq', 4, true);
 
 
 --
--- TOC entry 2354 (class 0 OID 32802)
--- Dependencies: 189
+-- TOC entry 2383 (class 0 OID 25110)
+-- Dependencies: 188
 -- Data for Name: cidade; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6777,8 +6842,8 @@ INSERT INTO cidade (id, nome, estado) VALUES (1, 'AFONSO CLÁUDIO', 8);
 
 
 --
--- TOC entry 2425 (class 0 OID 0)
--- Dependencies: 190
+-- TOC entry 2451 (class 0 OID 0)
+-- Dependencies: 189
 -- Name: cidade_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -6786,8 +6851,8 @@ SELECT pg_catalog.setval('cidade_id_seq', 5564, true);
 
 
 --
--- TOC entry 2356 (class 0 OID 32810)
--- Dependencies: 191
+-- TOC entry 2385 (class 0 OID 25118)
+-- Dependencies: 190
 -- Data for Name: dia_semana; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6800,8 +6865,8 @@ INSERT INTO dia_semana (id, nome) VALUES (4, 'QUINTA');
 
 
 --
--- TOC entry 2426 (class 0 OID 0)
--- Dependencies: 192
+-- TOC entry 2452 (class 0 OID 0)
+-- Dependencies: 191
 -- Name: dia_semana_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -6809,8 +6874,8 @@ SELECT pg_catalog.setval('dia_semana_id_seq', 6, true);
 
 
 --
--- TOC entry 2358 (class 0 OID 32818)
--- Dependencies: 193
+-- TOC entry 2387 (class 0 OID 25126)
+-- Dependencies: 192
 -- Data for Name: doacao; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6819,8 +6884,8 @@ INSERT INTO doacao (id, doadora_parto, banco) VALUES (2, 2, 1);
 
 
 --
--- TOC entry 2427 (class 0 OID 0)
--- Dependencies: 194
+-- TOC entry 2453 (class 0 OID 0)
+-- Dependencies: 193
 -- Name: doacao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -6828,8 +6893,8 @@ SELECT pg_catalog.setval('doacao_id_seq', 2, true);
 
 
 --
--- TOC entry 2360 (class 0 OID 32823)
--- Dependencies: 195
+-- TOC entry 2389 (class 0 OID 25131)
+-- Dependencies: 194
 -- Data for Name: doadora; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6838,8 +6903,8 @@ INSERT INTO doadora (id, pessoa, ativo) VALUES (2, 3, true);
 
 
 --
--- TOC entry 2428 (class 0 OID 0)
--- Dependencies: 196
+-- TOC entry 2454 (class 0 OID 0)
+-- Dependencies: 195
 -- Name: doadora_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -6847,8 +6912,8 @@ SELECT pg_catalog.setval('doadora_id_seq', 2, true);
 
 
 --
--- TOC entry 2392 (class 0 OID 49207)
--- Dependencies: 227
+-- TOC entry 2391 (class 0 OID 25136)
+-- Dependencies: 196
 -- Data for Name: doadora_parto; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6857,8 +6922,8 @@ INSERT INTO doadora_parto (id, doadora, data_parto, nome_bebe) VALUES (2, 2, '20
 
 
 --
--- TOC entry 2429 (class 0 OID 0)
--- Dependencies: 226
+-- TOC entry 2455 (class 0 OID 0)
+-- Dependencies: 197
 -- Name: doadora_parto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -6866,8 +6931,8 @@ SELECT pg_catalog.setval('doadora_parto_id_seq', 2, true);
 
 
 --
--- TOC entry 2385 (class 0 OID 33097)
--- Dependencies: 220
+-- TOC entry 2393 (class 0 OID 25144)
+-- Dependencies: 198
 -- Data for Name: estado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6901,8 +6966,8 @@ INSERT INTO estado (id, sigla, nome) VALUES (1, 'AC', 'ACRE');
 
 
 --
--- TOC entry 2430 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 2456 (class 0 OID 0)
+-- Dependencies: 199
 -- Name: estado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -6910,16 +6975,16 @@ SELECT pg_catalog.setval('estado_id_seq', 27, true);
 
 
 --
--- TOC entry 2362 (class 0 OID 32838)
--- Dependencies: 197
+-- TOC entry 2395 (class 0 OID 25152)
+-- Dependencies: 200
 -- Data for Name: funcionario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2431 (class 0 OID 0)
--- Dependencies: 198
+-- TOC entry 2457 (class 0 OID 0)
+-- Dependencies: 201
 -- Name: funcionario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -6927,8 +6992,8 @@ SELECT pg_catalog.setval('funcionario_id_seq', 1, false);
 
 
 --
--- TOC entry 2364 (class 0 OID 32843)
--- Dependencies: 199
+-- TOC entry 2397 (class 0 OID 25157)
+-- Dependencies: 202
 -- Data for Name: horario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6937,8 +7002,8 @@ INSERT INTO horario (id, nome) VALUES (2, 'TARDE');
 
 
 --
--- TOC entry 2432 (class 0 OID 0)
--- Dependencies: 200
+-- TOC entry 2458 (class 0 OID 0)
+-- Dependencies: 203
 -- Name: horario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -6946,8 +7011,8 @@ SELECT pg_catalog.setval('horario_id_seq', 2, true);
 
 
 --
--- TOC entry 2366 (class 0 OID 32851)
--- Dependencies: 201
+-- TOC entry 2399 (class 0 OID 25165)
+-- Dependencies: 204
 -- Data for Name: motivo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6958,8 +7023,8 @@ INSERT INTO motivo (id, nome) VALUES (4, 'ROTA LOTADA');
 
 
 --
--- TOC entry 2433 (class 0 OID 0)
--- Dependencies: 202
+-- TOC entry 2459 (class 0 OID 0)
+-- Dependencies: 205
 -- Name: motivo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -6967,16 +7032,16 @@ SELECT pg_catalog.setval('motivo_id_seq', 4, true);
 
 
 --
--- TOC entry 2368 (class 0 OID 32859)
--- Dependencies: 203
+-- TOC entry 2401 (class 0 OID 25173)
+-- Dependencies: 206
 -- Data for Name: motivo_status_agenda; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2434 (class 0 OID 0)
--- Dependencies: 204
+-- TOC entry 2460 (class 0 OID 0)
+-- Dependencies: 207
 -- Name: motivo_status_agenda_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -6984,8 +7049,8 @@ SELECT pg_catalog.setval('motivo_status_agenda_id_seq', 1, false);
 
 
 --
--- TOC entry 2370 (class 0 OID 32864)
--- Dependencies: 205
+-- TOC entry 2403 (class 0 OID 25178)
+-- Dependencies: 208
 -- Data for Name: objetivo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6995,8 +7060,8 @@ INSERT INTO objetivo (id, nome) VALUES (3, 'ENVIO E COLETA DE POTE');
 
 
 --
--- TOC entry 2435 (class 0 OID 0)
--- Dependencies: 206
+-- TOC entry 2461 (class 0 OID 0)
+-- Dependencies: 209
 -- Name: objetivo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -7004,8 +7069,8 @@ SELECT pg_catalog.setval('objetivo_id_seq', 3, true);
 
 
 --
--- TOC entry 2388 (class 0 OID 49173)
--- Dependencies: 223
+-- TOC entry 2405 (class 0 OID 25186)
+-- Dependencies: 210
 -- Data for Name: permissao; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7092,8 +7157,8 @@ INSERT INTO permissao (id, descricao) VALUES (40, 'ROLE_REMOVER_DOADORA_PARTO');
 
 
 --
--- TOC entry 2372 (class 0 OID 32872)
--- Dependencies: 207
+-- TOC entry 2406 (class 0 OID 25192)
+-- Dependencies: 211
 -- Data for Name: pessoa; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7103,8 +7168,8 @@ INSERT INTO pessoa (id, nome, data_nascimento, logradouro, numero, bairro, compl
 
 
 --
--- TOC entry 2436 (class 0 OID 0)
--- Dependencies: 208
+-- TOC entry 2462 (class 0 OID 0)
+-- Dependencies: 212
 -- Name: pessoa_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -7112,8 +7177,8 @@ SELECT pg_catalog.setval('pessoa_id_seq', 3, true);
 
 
 --
--- TOC entry 2374 (class 0 OID 32880)
--- Dependencies: 209
+-- TOC entry 2408 (class 0 OID 25200)
+-- Dependencies: 213
 -- Data for Name: rota; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7132,8 +7197,8 @@ INSERT INTO rota (id, horario, dia_semana) VALUES (12, 2, 6);
 
 
 --
--- TOC entry 2437 (class 0 OID 0)
--- Dependencies: 210
+-- TOC entry 2463 (class 0 OID 0)
+-- Dependencies: 214
 -- Name: rota_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -7141,8 +7206,17 @@ SELECT pg_catalog.setval('rota_id_seq', 12, true);
 
 
 --
--- TOC entry 2376 (class 0 OID 32885)
--- Dependencies: 211
+-- TOC entry 2376 (class 0 OID 25077)
+-- Dependencies: 181
+-- Data for Name: schema_version; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO schema_version (version_rank, installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (1, 1, '01', 'criar e registrar schema', 'SQL', 'V01__criar_e_registrar_schema.sql', 1537007524, 'postgres', '2018-03-26 13:37:50.512198', 2497, true);
+
+
+--
+-- TOC entry 2410 (class 0 OID 25205)
+-- Dependencies: 215
 -- Data for Name: status; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7154,8 +7228,8 @@ INSERT INTO status (id, nome) VALUES (3, 'CONCLUÍDO');
 
 
 --
--- TOC entry 2377 (class 0 OID 32891)
--- Dependencies: 212
+-- TOC entry 2411 (class 0 OID 25211)
+-- Dependencies: 216
 -- Data for Name: status_agenda; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7167,8 +7241,8 @@ INSERT INTO status_agenda (id, data, agenda, status, observacao, usuario) VALUES
 
 
 --
--- TOC entry 2438 (class 0 OID 0)
--- Dependencies: 213
+-- TOC entry 2464 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: status_agenda_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -7176,8 +7250,8 @@ SELECT pg_catalog.setval('status_agenda_id_seq', 7, true);
 
 
 --
--- TOC entry 2439 (class 0 OID 0)
--- Dependencies: 214
+-- TOC entry 2465 (class 0 OID 0)
+-- Dependencies: 218
 -- Name: status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -7185,8 +7259,8 @@ SELECT pg_catalog.setval('status_id_seq', 5, true);
 
 
 --
--- TOC entry 2380 (class 0 OID 32901)
--- Dependencies: 215
+-- TOC entry 2414 (class 0 OID 25221)
+-- Dependencies: 219
 -- Data for Name: tipo_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7195,8 +7269,8 @@ INSERT INTO tipo_usuario (id, nome) VALUES (2, 'FUNCIONARIO');
 
 
 --
--- TOC entry 2440 (class 0 OID 0)
--- Dependencies: 216
+-- TOC entry 2466 (class 0 OID 0)
+-- Dependencies: 220
 -- Name: tipo_usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -7204,8 +7278,8 @@ SELECT pg_catalog.setval('tipo_usuario_id_seq', 2, true);
 
 
 --
--- TOC entry 2390 (class 0 OID 49183)
--- Dependencies: 225
+-- TOC entry 2416 (class 0 OID 25229)
+-- Dependencies: 221
 -- Data for Name: tipo_usuario_permissao; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7278,8 +7352,8 @@ INSERT INTO tipo_usuario_permissao (id, tipo_usuario, permissao) VALUES (77, 2, 
 
 
 --
--- TOC entry 2441 (class 0 OID 0)
--- Dependencies: 224
+-- TOC entry 2467 (class 0 OID 0)
+-- Dependencies: 222
 -- Name: tipo_usuario_permissao_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -7287,8 +7361,8 @@ SELECT pg_catalog.setval('tipo_usuario_permissao_id_seq', 77, true);
 
 
 --
--- TOC entry 2382 (class 0 OID 32909)
--- Dependencies: 217
+-- TOC entry 2418 (class 0 OID 25234)
+-- Dependencies: 223
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7298,8 +7372,8 @@ INSERT INTO usuario (id, email, password, tipo_usuario, pessoa, ativo) VALUES (3
 
 
 --
--- TOC entry 2442 (class 0 OID 0)
--- Dependencies: 218
+-- TOC entry 2468 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -7307,8 +7381,8 @@ SELECT pg_catalog.setval('usuario_id_seq', 3, true);
 
 
 --
--- TOC entry 2166 (class 2606 OID 32937)
--- Name: agenda agenda_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2195 (class 2606 OID 25269)
+-- Name: agenda_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY agenda
@@ -7316,8 +7390,8 @@ ALTER TABLE ONLY agenda
 
 
 --
--- TOC entry 2168 (class 2606 OID 32939)
--- Name: bairro bairro_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2197 (class 2606 OID 25271)
+-- Name: bairro_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY bairro
@@ -7325,8 +7399,8 @@ ALTER TABLE ONLY bairro
 
 
 --
--- TOC entry 2202 (class 2606 OID 40992)
--- Name: banco banco_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2199 (class 2606 OID 25273)
+-- Name: banco_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY banco
@@ -7334,8 +7408,8 @@ ALTER TABLE ONLY banco
 
 
 --
--- TOC entry 2170 (class 2606 OID 32941)
--- Name: cidade cidade_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2201 (class 2606 OID 25275)
+-- Name: cidade_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY cidade
@@ -7343,8 +7417,8 @@ ALTER TABLE ONLY cidade
 
 
 --
--- TOC entry 2172 (class 2606 OID 32943)
--- Name: dia_semana dia_semana_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2203 (class 2606 OID 25277)
+-- Name: dia_semana_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY dia_semana
@@ -7352,8 +7426,8 @@ ALTER TABLE ONLY dia_semana
 
 
 --
--- TOC entry 2174 (class 2606 OID 32945)
--- Name: doacao doacao_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2205 (class 2606 OID 25279)
+-- Name: doacao_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY doacao
@@ -7361,8 +7435,8 @@ ALTER TABLE ONLY doacao
 
 
 --
--- TOC entry 2208 (class 2606 OID 49212)
--- Name: doadora_parto doadora_parto_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2209 (class 2606 OID 25281)
+-- Name: doadora_parto_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY doadora_parto
@@ -7370,8 +7444,8 @@ ALTER TABLE ONLY doadora_parto
 
 
 --
--- TOC entry 2176 (class 2606 OID 32947)
--- Name: doadora doadora_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2207 (class 2606 OID 25283)
+-- Name: doadora_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY doadora
@@ -7379,8 +7453,8 @@ ALTER TABLE ONLY doadora
 
 
 --
--- TOC entry 2200 (class 2606 OID 33105)
--- Name: estado estado_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2211 (class 2606 OID 25285)
+-- Name: estado_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY estado
@@ -7388,8 +7462,8 @@ ALTER TABLE ONLY estado
 
 
 --
--- TOC entry 2178 (class 2606 OID 32953)
--- Name: funcionario funcionario_fk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2213 (class 2606 OID 25287)
+-- Name: funcionario_fk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY funcionario
@@ -7397,8 +7471,8 @@ ALTER TABLE ONLY funcionario
 
 
 --
--- TOC entry 2180 (class 2606 OID 32955)
--- Name: horario horario_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2215 (class 2606 OID 25289)
+-- Name: horario_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY horario
@@ -7406,8 +7480,8 @@ ALTER TABLE ONLY horario
 
 
 --
--- TOC entry 2182 (class 2606 OID 32957)
--- Name: motivo motivo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2217 (class 2606 OID 25291)
+-- Name: motivo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY motivo
@@ -7415,8 +7489,8 @@ ALTER TABLE ONLY motivo
 
 
 --
--- TOC entry 2184 (class 2606 OID 32959)
--- Name: motivo_status_agenda motivo_status_agenda_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2219 (class 2606 OID 25293)
+-- Name: motivo_status_agenda_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY motivo_status_agenda
@@ -7424,8 +7498,8 @@ ALTER TABLE ONLY motivo_status_agenda
 
 
 --
--- TOC entry 2186 (class 2606 OID 32961)
--- Name: objetivo objetivo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2221 (class 2606 OID 25295)
+-- Name: objetivo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY objetivo
@@ -7433,8 +7507,8 @@ ALTER TABLE ONLY objetivo
 
 
 --
--- TOC entry 2204 (class 2606 OID 49180)
--- Name: permissao permissao_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2223 (class 2606 OID 25297)
+-- Name: permissao_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY permissao
@@ -7442,8 +7516,8 @@ ALTER TABLE ONLY permissao
 
 
 --
--- TOC entry 2188 (class 2606 OID 32963)
--- Name: pessoa pessoa_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2225 (class 2606 OID 25299)
+-- Name: pessoa_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY pessoa
@@ -7451,8 +7525,8 @@ ALTER TABLE ONLY pessoa
 
 
 --
--- TOC entry 2190 (class 2606 OID 32965)
--- Name: rota rota_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2227 (class 2606 OID 25301)
+-- Name: rota_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY rota
@@ -7460,8 +7534,17 @@ ALTER TABLE ONLY rota
 
 
 --
--- TOC entry 2194 (class 2606 OID 32967)
--- Name: status_agenda status_agenda_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2191 (class 2606 OID 25085)
+-- Name: schema_version_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY schema_version
+    ADD CONSTRAINT schema_version_pk PRIMARY KEY (version);
+
+
+--
+-- TOC entry 2231 (class 2606 OID 25303)
+-- Name: status_agenda_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY status_agenda
@@ -7469,8 +7552,8 @@ ALTER TABLE ONLY status_agenda
 
 
 --
--- TOC entry 2192 (class 2606 OID 32969)
--- Name: status status_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2229 (class 2606 OID 25305)
+-- Name: status_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY status
@@ -7478,8 +7561,8 @@ ALTER TABLE ONLY status
 
 
 --
--- TOC entry 2206 (class 2606 OID 49188)
--- Name: tipo_usuario_permissao tipo_usuario_permissao_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2235 (class 2606 OID 25307)
+-- Name: tipo_usuario_permissao_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY tipo_usuario_permissao
@@ -7487,8 +7570,8 @@ ALTER TABLE ONLY tipo_usuario_permissao
 
 
 --
--- TOC entry 2196 (class 2606 OID 32971)
--- Name: tipo_usuario tipo_usuario_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2233 (class 2606 OID 25309)
+-- Name: tipo_usuario_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY tipo_usuario
@@ -7496,8 +7579,8 @@ ALTER TABLE ONLY tipo_usuario
 
 
 --
--- TOC entry 2198 (class 2606 OID 32973)
--- Name: usuario usuario_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2237 (class 2606 OID 25311)
+-- Name: usuario_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY usuario
@@ -7505,8 +7588,32 @@ ALTER TABLE ONLY usuario
 
 
 --
--- TOC entry 2211 (class 2606 OID 33090)
--- Name: agenda agenda_doacao_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2189 (class 1259 OID 25087)
+-- Name: schema_version_ir_idx; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX schema_version_ir_idx ON schema_version USING btree (installed_rank);
+
+
+--
+-- TOC entry 2192 (class 1259 OID 25088)
+-- Name: schema_version_s_idx; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX schema_version_s_idx ON schema_version USING btree (success);
+
+
+--
+-- TOC entry 2193 (class 1259 OID 25086)
+-- Name: schema_version_vr_idx; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX schema_version_vr_idx ON schema_version USING btree (version_rank);
+
+
+--
+-- TOC entry 2238 (class 2606 OID 25312)
+-- Name: agenda_doacao_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY agenda
@@ -7514,8 +7621,8 @@ ALTER TABLE ONLY agenda
 
 
 --
--- TOC entry 2209 (class 2606 OID 32979)
--- Name: agenda agenda_objetivo_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2239 (class 2606 OID 25317)
+-- Name: agenda_objetivo_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY agenda
@@ -7523,8 +7630,8 @@ ALTER TABLE ONLY agenda
 
 
 --
--- TOC entry 2210 (class 2606 OID 32984)
--- Name: agenda agenda_rota_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2240 (class 2606 OID 25322)
+-- Name: agenda_rota_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY agenda
@@ -7532,8 +7639,8 @@ ALTER TABLE ONLY agenda
 
 
 --
--- TOC entry 2212 (class 2606 OID 32994)
--- Name: bairro bairro_cidade_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2241 (class 2606 OID 25327)
+-- Name: bairro_cidade_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY bairro
@@ -7541,8 +7648,8 @@ ALTER TABLE ONLY bairro
 
 
 --
--- TOC entry 2228 (class 2606 OID 40993)
--- Name: banco banco_bairro_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2242 (class 2606 OID 25332)
+-- Name: banco_bairro_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY banco
@@ -7550,8 +7657,8 @@ ALTER TABLE ONLY banco
 
 
 --
--- TOC entry 2213 (class 2606 OID 33113)
--- Name: cidade cidade_estado_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2243 (class 2606 OID 25337)
+-- Name: cidade_estado_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY cidade
@@ -7559,8 +7666,8 @@ ALTER TABLE ONLY cidade
 
 
 --
--- TOC entry 2214 (class 2606 OID 40998)
--- Name: doacao doacao_banco_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2244 (class 2606 OID 25342)
+-- Name: doacao_banco_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY doacao
@@ -7568,8 +7675,8 @@ ALTER TABLE ONLY doacao
 
 
 --
--- TOC entry 2215 (class 2606 OID 49226)
--- Name: doacao doacao_doadora_parto_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2245 (class 2606 OID 25347)
+-- Name: doacao_doadora_parto_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY doacao
@@ -7577,8 +7684,8 @@ ALTER TABLE ONLY doacao
 
 
 --
--- TOC entry 2231 (class 2606 OID 49213)
--- Name: doadora_parto doadora_parto_doadora_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2247 (class 2606 OID 25352)
+-- Name: doadora_parto_doadora_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY doadora_parto
@@ -7586,8 +7693,8 @@ ALTER TABLE ONLY doadora_parto
 
 
 --
--- TOC entry 2216 (class 2606 OID 33009)
--- Name: doadora doadora_pessoa_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2246 (class 2606 OID 25357)
+-- Name: doadora_pessoa_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY doadora
@@ -7595,8 +7702,8 @@ ALTER TABLE ONLY doadora
 
 
 --
--- TOC entry 2217 (class 2606 OID 33029)
--- Name: funcionario funcionario_pessoa_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2248 (class 2606 OID 25362)
+-- Name: funcionario_pessoa_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY funcionario
@@ -7604,8 +7711,8 @@ ALTER TABLE ONLY funcionario
 
 
 --
--- TOC entry 2218 (class 2606 OID 33034)
--- Name: motivo_status_agenda motivo_status_agenda_motivo_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2249 (class 2606 OID 25367)
+-- Name: motivo_status_agenda_motivo_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY motivo_status_agenda
@@ -7613,8 +7720,8 @@ ALTER TABLE ONLY motivo_status_agenda
 
 
 --
--- TOC entry 2219 (class 2606 OID 33039)
--- Name: motivo_status_agenda motivo_status_agenda_status_agenda_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2250 (class 2606 OID 25372)
+-- Name: motivo_status_agenda_status_agenda_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY motivo_status_agenda
@@ -7622,8 +7729,8 @@ ALTER TABLE ONLY motivo_status_agenda
 
 
 --
--- TOC entry 2220 (class 2606 OID 33044)
--- Name: pessoa pessoa_bairro_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2251 (class 2606 OID 25377)
+-- Name: pessoa_bairro_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY pessoa
@@ -7631,8 +7738,8 @@ ALTER TABLE ONLY pessoa
 
 
 --
--- TOC entry 2221 (class 2606 OID 33049)
--- Name: rota rota_dia_semana_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2252 (class 2606 OID 25382)
+-- Name: rota_dia_semana_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY rota
@@ -7640,8 +7747,8 @@ ALTER TABLE ONLY rota
 
 
 --
--- TOC entry 2222 (class 2606 OID 33054)
--- Name: rota rota_horario_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2253 (class 2606 OID 25387)
+-- Name: rota_horario_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY rota
@@ -7649,8 +7756,8 @@ ALTER TABLE ONLY rota
 
 
 --
--- TOC entry 2223 (class 2606 OID 33059)
--- Name: status_agenda status_agenda_agenda_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2254 (class 2606 OID 25392)
+-- Name: status_agenda_agenda_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY status_agenda
@@ -7658,8 +7765,8 @@ ALTER TABLE ONLY status_agenda
 
 
 --
--- TOC entry 2224 (class 2606 OID 33064)
--- Name: status_agenda status_agenda_status_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2255 (class 2606 OID 25397)
+-- Name: status_agenda_status_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY status_agenda
@@ -7667,8 +7774,8 @@ ALTER TABLE ONLY status_agenda
 
 
 --
--- TOC entry 2225 (class 2606 OID 33069)
--- Name: status_agenda status_agenda_usuario_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2256 (class 2606 OID 25402)
+-- Name: status_agenda_usuario_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY status_agenda
@@ -7676,8 +7783,8 @@ ALTER TABLE ONLY status_agenda
 
 
 --
--- TOC entry 2230 (class 2606 OID 49194)
--- Name: tipo_usuario_permissao tipo_usuario_permissao_permissao_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2257 (class 2606 OID 25407)
+-- Name: tipo_usuario_permissao_permissao_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY tipo_usuario_permissao
@@ -7685,8 +7792,8 @@ ALTER TABLE ONLY tipo_usuario_permissao
 
 
 --
--- TOC entry 2229 (class 2606 OID 49189)
--- Name: tipo_usuario_permissao tipo_usuario_permissao_tipo_usuario_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2258 (class 2606 OID 25412)
+-- Name: tipo_usuario_permissao_tipo_usuario_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY tipo_usuario_permissao
@@ -7694,8 +7801,8 @@ ALTER TABLE ONLY tipo_usuario_permissao
 
 
 --
--- TOC entry 2226 (class 2606 OID 33074)
--- Name: usuario usuario_pessoa_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2259 (class 2606 OID 25417)
+-- Name: usuario_pessoa_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY usuario
@@ -7703,15 +7810,15 @@ ALTER TABLE ONLY usuario
 
 
 --
--- TOC entry 2227 (class 2606 OID 33079)
--- Name: usuario usuario_tipo_usuario_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2260 (class 2606 OID 25422)
+-- Name: usuario_tipo_usuario_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY usuario
     ADD CONSTRAINT usuario_tipo_usuario_fk FOREIGN KEY (tipo_usuario) REFERENCES tipo_usuario(id);
 
 
--- Completed on 2018-03-26 01:06:51
+-- Completed on 2018-03-26 15:47:59 BRT
 
 --
 -- PostgreSQL database dump complete
