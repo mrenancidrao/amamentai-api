@@ -7147,9 +7147,6 @@ SELECT pg_catalog.setval('rota_id_seq', 12, true);
 -- Data for Name: schema_version; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO schema_version (version_rank, installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success) VALUES (1, 1, '01', 'criar e registrar schema', 'SQL', 'V01__criar_e_registrar_schema.sql', 1537007524, 'postgres', '2018-03-26 13:37:50.512198', 2497, true);
-
-
 --
 -- TOC entry 2410 (class 0 OID 25205)
 -- Dependencies: 215
@@ -7467,15 +7464,6 @@ ALTER TABLE ONLY pessoa
 
 ALTER TABLE ONLY rota
     ADD CONSTRAINT rota_pk PRIMARY KEY (id);
-
-
---
--- TOC entry 2191 (class 2606 OID 25085)
--- Name: schema_version_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY schema_version
-    ADD CONSTRAINT schema_version_pk PRIMARY KEY (version);
 
 
 --
