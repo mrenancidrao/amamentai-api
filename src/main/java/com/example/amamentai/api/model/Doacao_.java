@@ -10,7 +10,7 @@ public abstract class Doacao_ {
 
 	public static volatile SingularAttribute<Doacao, Banco> banco;
 	public static volatile SingularAttribute<Doacao, Integer> id;
-	public static volatile SingularAttribute<Doacao, Doadora> doadora;
+	public static volatile SingularAttribute<Doacao, DoadoraParto> doadoraParto;
 
 }
 

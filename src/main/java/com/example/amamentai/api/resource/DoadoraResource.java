@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,12 +40,14 @@ public class DoadoraResource {
 	private DoadoraService doadoraService;
 	
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_LISTAR_DOADORA') and #oauth2.hasScope('read')")
 	public List<Doadora> listar(){
 		return doadoraRepository.findAll();
 	}
 	
 	@PostMapping
 	@ResponseBody
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_DOADORA') and #oauth2.hasScope('write')")
 	public ResponseEntity<Doadora> criar(@Valid @RequestBody Doadora doadora, HttpServletResponse response){
 		Doadora doadoraSalva = doadoraRepository.save(doadora);
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, doadoraSalva.getId()));
@@ -53,17 +56,20 @@ public class DoadoraResource {
 	}
 
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_DOADORA') and #oauth2.hasScope('read')")
 	public Doadora buscarPeloId(@PathVariable Integer id) {
 		return doadoraRepository.findOne(id);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_REMOVER_DOADORA') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Integer id) {
 		doadoraRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_DOADORA') and #oauth2.hasScope('read')")
 	public ResponseEntity<Doadora> atualizar(@PathVariable Integer id, @Valid @RequestBody Doadora doadora){
 		Doadora doadoraSalva = doadoraService.atualizar(id, doadora);
 		return ResponseEntity.ok(doadoraSalva);
@@ -71,3 +77,5 @@ public class DoadoraResource {
 	
 
 }
+
+

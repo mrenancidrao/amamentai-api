@@ -20,15 +20,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 /**
  *
  * @author renan
  */
 @Entity
-@Table(name = "agenda", catalog = "amamentai-api", schema = "public")
-public class Agenda implements Serializable {
+@Table(name = "doadora_parto", catalog = "amamentai-api", schema = "public")
+public class DoadoraParto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -36,31 +34,20 @@ public class Agenda implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "data")
+    @JoinColumn(name = "doadora", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Doadora doadora;
+    @Column(name = "data_parto")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date data;
-    @JoinColumn(name = "doacao", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Doacao doacao;
-    @JoinColumn(name = "objetivo", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Objetivo objetivo;
-    @JoinColumn(name = "rota", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Rota rota;
+    private Date dataParto;
+    @Column(name = "nome_bebe")
+    private String nomeBebe;
 
-    public Agenda() {
+    public DoadoraParto() {
     }
 
-    public Agenda(Integer id) {
+    public DoadoraParto(Integer id) {
         this.id = id;
-    }
-
-    public Agenda(Integer id, Date data) {
-        this.id = id;
-        this.data = data;
     }
 
     public Integer getId() {
@@ -71,36 +58,28 @@ public class Agenda implements Serializable {
         this.id = id;
     }
 
-    public Date getData() {
-        return data;
+    public Doadora getDoadora() {
+		return doadora;
+	}
+
+	public void setDoadora(Doadora doadora) {
+		this.doadora = doadora;
+	}
+
+	public Date getDataParto() {
+        return dataParto;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setDataParto(Date dataParto) {
+        this.dataParto = dataParto;
     }
 
-    public Doacao getDoacao() {
-        return doacao;
+    public String getNomeBebe() {
+        return nomeBebe;
     }
 
-    public void setDoacao(Doacao doacao) {
-        this.doacao = doacao;
-    }
-
-    public Objetivo getObjetivo() {
-        return objetivo;
-    }
-
-    public void setObjetivo(Objetivo objetivo) {
-        this.objetivo = objetivo;
-    }
-
-    public Rota getRota() {
-        return rota;
-    }
-
-    public void setRota(Rota rota) {
-        this.rota = rota;
+    public void setNomeBebe(String nomeBebe) {
+        this.nomeBebe = nomeBebe;
     }
 
     @Override
@@ -113,10 +92,10 @@ public class Agenda implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Agenda)) {
+        if (!(object instanceof DoadoraParto)) {
             return false;
         }
-        Agenda other = (Agenda) object;
+        DoadoraParto other = (DoadoraParto) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -125,7 +104,7 @@ public class Agenda implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.amamentai.api.model.Agenda[ id=" + id + " ]";
+        return "com.example.amamentai.api.model.DoadoraParto[ id=" + id + " ]";
     }
     
 }

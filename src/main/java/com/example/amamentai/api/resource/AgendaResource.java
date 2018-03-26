@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,12 +40,14 @@ public class AgendaResource {
 	private AgendaService agendaService;
 	
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_LISTAR_AGENDA') and #oauth2.hasScope('read')")
 	public List<Agenda> listar(){
 		return agendaRepository.findAll();
 	}
 	
 	@PostMapping
 	@ResponseBody
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_AGENDA') and #oauth2.hasScope('write')")
 	public ResponseEntity<Agenda> criar(@Valid @RequestBody Agenda agenda, HttpServletResponse response){
 		Agenda agendaSalva = agendaRepository.save(agenda);
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, agendaSalva.getId()));
@@ -53,17 +56,20 @@ public class AgendaResource {
 	}
 
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_AGENDA') and #oauth2.hasScope('read')")
 	public Agenda buscarPeloId(@PathVariable Integer id) {
 		return agendaRepository.findOne(id);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_REMOVER_AGENDA') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Integer id) {
 		agendaRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_AGENDA') and #oauth2.hasScope('read')")
 	public ResponseEntity<Agenda> atualizar(@PathVariable Integer id, @Valid @RequestBody Agenda agenda){
 		Agenda agendaSalva = agendaService.atualizar(id, agenda);
 		return ResponseEntity.ok(agendaSalva);
@@ -71,3 +77,5 @@ public class AgendaResource {
 	
 
 }
+
+

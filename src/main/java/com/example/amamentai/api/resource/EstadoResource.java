@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,11 +40,13 @@ public class EstadoResource {
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_LISTAR_ESTADO') and #oauth2.hasScope('read')")
 	public List<Estado> listar() {
 		return estadoRepository.findAll();
 	}
 	
 	@PostMapping
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_ESTADO') and #oauth2.hasScope('write')")
 	public ResponseEntity<Estado> criar(@Valid @RequestBody Estado estado, HttpServletResponse response) {
 		Estado estadoSalva = estadoRepository.save(estado);
 		
@@ -68,6 +71,7 @@ public class EstadoResource {
 	}
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_ESTADO') and #oauth2.hasScope('read')")
 	public Estado buscarPeloId(@PathVariable Integer id) {
 		return estadoRepository.findOne(id);
 	}
@@ -75,14 +79,18 @@ public class EstadoResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_REMOVER_ESTADO') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Integer id) {
 		estadoRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_ESTADO') and #oauth2.hasScope('read')")
 	public ResponseEntity<Estado> atualizar(@PathVariable Integer id, @Valid @RequestBody Estado estado){
 		Estado estadoSalva = estadoService.atualizar(id, estado);
 		return ResponseEntity.ok(estadoSalva);
 	}
 
 }
+
+

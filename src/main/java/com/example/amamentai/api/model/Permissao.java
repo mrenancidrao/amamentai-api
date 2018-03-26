@@ -10,11 +10,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,23 +18,22 @@ import javax.persistence.Table;
  * @author renan
  */
 @Entity
-@Table(name = "filho", catalog = "amamentai-api", schema = "public")
-public class Filho implements Serializable {
+@Table(name = "permissao", catalog = "amamentai-api", schema = "public")
+public class Permissao implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "pessoa", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Pessoa pessoa;
+    @Column(name = "descricao")
+    private String descricao;
+    
 
-    public Filho() {
+    public Permissao() {
     }
 
-    public Filho(Integer id) {
+    public Permissao(Integer id) {
         this.id = id;
     }
 
@@ -50,13 +45,15 @@ public class Filho implements Serializable {
         this.id = id;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
+
+    
 
     @Override
     public int hashCode() {
@@ -68,10 +65,10 @@ public class Filho implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Filho)) {
+        if (!(object instanceof Permissao)) {
             return false;
         }
-        Filho other = (Filho) object;
+        Permissao other = (Permissao) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -80,7 +77,7 @@ public class Filho implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.amamentai.api.model.Filho[ id=" + id + " ]";
+        return "com.example.amamentai.api.model.Permissao[ id=" + id + " ]";
     }
     
 }

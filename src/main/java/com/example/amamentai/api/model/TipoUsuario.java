@@ -6,13 +6,18 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -32,6 +37,11 @@ public class TipoUsuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tipo_usuario_permissao", joinColumns = @JoinColumn(name = "tipo_usuario")
+    			, inverseJoinColumns = @JoinColumn(name = "permissao"))
+    List<Permissao> permissoes;
    
     public TipoUsuario() {
     }
@@ -60,10 +70,20 @@ public class TipoUsuario implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+    
 
     
 
-    @Override
+    public List<Permissao> getPermissoes() {
+		return permissoes;
+	}
+
+	public void setPermissoes(List<Permissao> permissoes) {
+		this.permissoes = permissoes;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);

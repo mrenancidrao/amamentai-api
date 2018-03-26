@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,11 +40,13 @@ public class CidadeResource {
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_LISTAR_CIDADE') and #oauth2.hasScope('read')")
 	public List<Cidade> listar() {
 		return cidadeRepository.findAll();
 	}
 	
 	@PostMapping
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_CIDADE') and #oauth2.hasScope('write')")
 	public ResponseEntity<Cidade> criar(@Valid @RequestBody Cidade cidade, HttpServletResponse response) {
 		Cidade cidadeSalva = cidadeRepository.save(cidade);
 		
@@ -68,6 +71,7 @@ public class CidadeResource {
 	}
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CIDADE') and #oauth2.hasScope('read')")
 	public Cidade buscarPeloId(@PathVariable Integer id) {
 		return cidadeRepository.findOne(id);
 	}
@@ -75,14 +79,18 @@ public class CidadeResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_REMOVER_CIDADE') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Integer id) {
 		cidadeRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_CIDADE') and #oauth2.hasScope('read')")
 	public ResponseEntity<Cidade> atualizar(@PathVariable Integer id, @Valid @RequestBody Cidade cidade){
 		Cidade cidadeSalva = cidadeService.atualizar(id, cidade);
 		return ResponseEntity.ok(cidadeSalva);
 	}
 
 }
+
+

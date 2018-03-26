@@ -31,9 +31,9 @@ public class Doacao implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "doadora", referencedColumnName = "id")
+    @JoinColumn(name = "doadora_parto", referencedColumnName = "id")
     @ManyToOne
-    private Doadora doadora;
+    private DoadoraParto doadoraParto;
     @JoinColumn(name = "banco", referencedColumnName = "id")
     @ManyToOne
     private Banco banco;
@@ -54,12 +54,12 @@ public class Doacao implements Serializable {
     }
 
     
-    public Doadora getDoadora() {
-        return doadora;
+    public DoadoraParto getDoadoraParto() {
+        return doadoraParto;
     }
 
-    public void setDoadora(Doadora doadora) {
-        this.doadora = doadora;
+    public void setDoadora(DoadoraParto doadoraParto) {
+        this.doadoraParto = doadoraParto;
     }
 
     public Banco getBanco() {

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,11 +39,13 @@ public class BancoResource {
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_LISTAR_BANCO') and #oauth2.hasScope('read')")
 	public List<Banco> listar() {
 		return bancoRepository.findAll();
 	}
 	
 	@PostMapping
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_BANCO') and #oauth2.hasScope('write')")
 	public ResponseEntity<Banco> criar(@Valid @RequestBody Banco banco, HttpServletResponse response) {
 		Banco bancoSalva = bancoRepository.save(banco);
 		
@@ -53,6 +56,7 @@ public class BancoResource {
 	
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_BANCO') and #oauth2.hasScope('read')")
 	public Banco buscarPeloId(@PathVariable Integer id) {
 		return bancoRepository.findOne(id);
 	}
@@ -60,14 +64,18 @@ public class BancoResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_REMOVER_BANCO') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Integer id) {
 		bancoRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_BANCO') and #oauth2.hasScope('read')")
 	public ResponseEntity<Banco> atualizar(@PathVariable Integer id, @Valid @RequestBody Banco banco){
 		Banco bancoSalva = bancoService.atualizar(id, banco);
 		return ResponseEntity.ok(bancoSalva);
 	}
 
 }
+
+

@@ -22,8 +22,8 @@ import javax.persistence.Table;
  * @author renan
  */
 @Entity
-@Table(name = "filho_doadora", catalog = "amamentai-api", schema = "public")
-public class FilhoDoadora implements Serializable {
+@Table(name = "tipo_usuario_permissao", catalog = "amamentai-api", schema = "public")
+public class TipoUsuarioPermissao implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,17 +31,15 @@ public class FilhoDoadora implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "doadora", referencedColumnName = "id")
+    @JoinColumn(name = "permissao", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Doadora doadora;
-    @JoinColumn(name = "filho", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Filho filho;
+    private Permissao permissao;
+    
 
-    public FilhoDoadora() {
+    public TipoUsuarioPermissao() {
     }
 
-    public FilhoDoadora(Integer id) {
+    public TipoUsuarioPermissao(Integer id) {
         this.id = id;
     }
 
@@ -53,20 +51,12 @@ public class FilhoDoadora implements Serializable {
         this.id = id;
     }
 
-    public Doadora getDoadora() {
-        return doadora;
+    public Permissao getPermissao() {
+        return permissao;
     }
 
-    public void setDoadora(Doadora doadora) {
-        this.doadora = doadora;
-    }
-
-    public Filho getFilho() {
-        return filho;
-    }
-
-    public void setFilho(Filho filho) {
-        this.filho = filho;
+    public void setPermissao(Permissao permissao) {
+        this.permissao = permissao;
     }
 
     @Override
@@ -79,10 +69,10 @@ public class FilhoDoadora implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FilhoDoadora)) {
+        if (!(object instanceof TipoUsuarioPermissao)) {
             return false;
         }
-        FilhoDoadora other = (FilhoDoadora) object;
+        TipoUsuarioPermissao other = (TipoUsuarioPermissao) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -91,7 +81,7 @@ public class FilhoDoadora implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.amamentai.api.model.FilhoDoadora[ id=" + id + " ]";
+        return "com.example.amamentai.api.model.TipoUsuarioPermissao[ id=" + id + " ]";
     }
     
 }

@@ -12,7 +12,6 @@ public abstract class Agenda_ {
 	public static volatile SingularAttribute<Agenda, Objetivo> objetivo;
 	public static volatile SingularAttribute<Agenda, Date> data;
 	public static volatile SingularAttribute<Agenda, Doacao> doacao;
-	public static volatile SingularAttribute<Agenda, Usuario> usuario;
 	public static volatile SingularAttribute<Agenda, Integer> id;
 	public static volatile SingularAttribute<Agenda, Rota> rota;
 

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,11 +42,13 @@ public class BairroResource {
 	
 	@CrossOrigin(maxAge = 10, origins = { "http://localhost:8000" })
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_LISTAR_BAIRRO') and #oauth2.hasScope('read')")
 	public List<Bairro> listar() {
 		return bairroRepository.findAll();
 	}
 	
 	@PostMapping
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_BAIRRO') and #oauth2.hasScope('write')")
 	public ResponseEntity<Bairro> criar(@Valid @RequestBody Bairro bairro, HttpServletResponse response) {
 		Bairro bairroSalva = bairroRepository.save(bairro);
 		
@@ -55,6 +58,7 @@ public class BairroResource {
 	}
 	
 	@PostMapping("/criarLote")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_BAIRRO') and #oauth2.hasScope('write')")
 	public ResponseEntity<List<Bairro>> criarBairro(@Valid @RequestBody List<Bairro> bairros, HttpServletResponse response) {
 		
 		List<Bairro> bairrosSalvos = new ArrayList<Bairro>();
@@ -70,6 +74,7 @@ public class BairroResource {
 	}
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_BAIRRO') and #oauth2.hasScope('read')")
 	public Bairro buscarPeloId(@PathVariable Integer id) {
 		return bairroRepository.findOne(id);
 	}
@@ -77,11 +82,13 @@ public class BairroResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_REMOVER_BAIRRO') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Integer id) {
 		bairroRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_BAIRRO') and #oauth2.hasScope('read')")
 	public ResponseEntity<Bairro> atualizar(@PathVariable Integer id, @Valid @RequestBody Bairro bairro){
 		Bairro bairroSalva = bairroService.atualizar(id, bairro);
 		return ResponseEntity.ok(bairroSalva);
