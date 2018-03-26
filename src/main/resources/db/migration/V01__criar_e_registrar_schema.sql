@@ -7512,28 +7512,6 @@ ALTER TABLE ONLY usuario
 
 
 --
--- TOC entry 2189 (class 1259 OID 25087)
--- Name: schema_version_ir_idx; Type: INDEX; Schema: public; Owner: postgres
---
-
-
---
--- TOC entry 2192 (class 1259 OID 25088)
--- Name: schema_version_s_idx; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX schema_version_s_idx ON schema_version USING btree (success);
-
-
---
--- TOC entry 2193 (class 1259 OID 25086)
--- Name: schema_version_vr_idx; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX schema_version_vr_idx ON schema_version USING btree (version_rank);
-
-
---
 -- TOC entry 2238 (class 2606 OID 25312)
 -- Name: agenda_doacao_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
