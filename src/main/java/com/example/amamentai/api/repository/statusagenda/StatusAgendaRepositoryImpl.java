@@ -16,7 +16,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import com.example.amamentai.api.model.StatusAgenda;
-import com.example.amamentai.api.model.StatusAgenda_;
 import com.example.amamentai.api.repository.filter.StatusAgendaFilter;
 
 
@@ -52,7 +51,7 @@ public class StatusAgendaRepositoryImpl implements StatusAgendaRepositoryQuery{
 		List<Predicate> predicates = new ArrayList<>();
 		
 		if (statusAgendaFilter.getStatus()!=null) {
-			predicates.add(builder.equal(root.get(StatusAgenda_.status), statusAgendaFilter.getStatus()));
+			predicates.add(builder.equal(root.get("status"), statusAgendaFilter.getStatus()));
 		}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
