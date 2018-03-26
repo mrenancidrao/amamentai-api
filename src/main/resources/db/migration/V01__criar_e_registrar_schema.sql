@@ -7516,8 +7516,6 @@ ALTER TABLE ONLY usuario
 -- Name: schema_version_ir_idx; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX schema_version_ir_idx ON schema_version USING btree (installed_rank);
-
 
 --
 -- TOC entry 2192 (class 1259 OID 25088)
