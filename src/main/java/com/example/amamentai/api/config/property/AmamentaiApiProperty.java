@@ -30,7 +30,7 @@ public class AmamentaiApiProperty {
 
 
 	public static class Seguranca {
-		private boolean enableHttps;
+		private boolean enableHttps = true;
 
 		public boolean isEnableHttps() {
 			return enableHttps;
