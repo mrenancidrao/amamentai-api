@@ -37,7 +37,6 @@ CREATE TABLE agenda (
 );
 
 
-ALTER TABLE agenda OWNER TO postgres;
 
 --
 -- TOC entry 183 (class 1259 OID 25092)
@@ -52,7 +51,7 @@ CREATE SEQUENCE agenda_id_seq
     CACHE 1;
 
 
-ALTER TABLE agenda_id_seq OWNER TO postgres;
+
 
 --
 -- TOC entry 2426 (class 0 OID 0)
@@ -75,7 +74,6 @@ CREATE TABLE bairro (
 );
 
 
-ALTER TABLE bairro OWNER TO postgres;
 
 --
 -- TOC entry 185 (class 1259 OID 25100)
@@ -90,7 +88,7 @@ CREATE SEQUENCE bairro_id_seq
     CACHE 1;
 
 
-ALTER TABLE bairro_id_seq OWNER TO postgres;
+
 
 --
 -- TOC entry 2427 (class 0 OID 0)
@@ -118,7 +116,6 @@ CREATE TABLE banco (
 );
 
 
-ALTER TABLE banco OWNER TO postgres;
 
 --
 -- TOC entry 187 (class 1259 OID 25108)
@@ -133,7 +130,6 @@ CREATE SEQUENCE banco_id_seq
     CACHE 1;
 
 
-ALTER TABLE banco_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2428 (class 0 OID 0)
@@ -156,7 +152,7 @@ CREATE TABLE cidade (
 );
 
 
-ALTER TABLE cidade OWNER TO postgres;
+
 
 --
 -- TOC entry 189 (class 1259 OID 25116)
@@ -171,7 +167,6 @@ CREATE SEQUENCE cidade_id_seq
     CACHE 1;
 
 
-ALTER TABLE cidade_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2429 (class 0 OID 0)
@@ -193,7 +188,7 @@ CREATE TABLE dia_semana (
 );
 
 
-ALTER TABLE dia_semana OWNER TO postgres;
+
 
 --
 -- TOC entry 191 (class 1259 OID 25124)
@@ -208,7 +203,7 @@ CREATE SEQUENCE dia_semana_id_seq
     CACHE 1;
 
 
-ALTER TABLE dia_semana_id_seq OWNER TO postgres;
+
 
 --
 -- TOC entry 2430 (class 0 OID 0)
@@ -231,8 +226,6 @@ CREATE TABLE doacao (
 );
 
 
-ALTER TABLE doacao OWNER TO postgres;
-
 --
 -- TOC entry 193 (class 1259 OID 25129)
 -- Name: doacao_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -246,7 +239,6 @@ CREATE SEQUENCE doacao_id_seq
     CACHE 1;
 
 
-ALTER TABLE doacao_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2431 (class 0 OID 0)
@@ -269,7 +261,6 @@ CREATE TABLE doadora (
 );
 
 
-ALTER TABLE doadora OWNER TO postgres;
 
 --
 -- TOC entry 195 (class 1259 OID 25134)
@@ -284,7 +275,7 @@ CREATE SEQUENCE doadora_id_seq
     CACHE 1;
 
 
-ALTER TABLE doadora_id_seq OWNER TO postgres;
+
 
 --
 -- TOC entry 2432 (class 0 OID 0)
@@ -308,7 +299,7 @@ CREATE TABLE doadora_parto (
 );
 
 
-ALTER TABLE doadora_parto OWNER TO postgres;
+
 
 --
 -- TOC entry 197 (class 1259 OID 25142)
@@ -323,7 +314,6 @@ CREATE SEQUENCE doadora_parto_id_seq
     CACHE 1;
 
 
-ALTER TABLE doadora_parto_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2433 (class 0 OID 0)
@@ -346,7 +336,6 @@ CREATE TABLE estado (
 );
 
 
-ALTER TABLE estado OWNER TO postgres;
 
 --
 -- TOC entry 199 (class 1259 OID 25150)
@@ -361,7 +350,6 @@ CREATE SEQUENCE estado_id_seq
     CACHE 1;
 
 
-ALTER TABLE estado_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2434 (class 0 OID 0)
@@ -384,7 +372,6 @@ CREATE TABLE funcionario (
 );
 
 
-ALTER TABLE funcionario OWNER TO postgres;
 
 --
 -- TOC entry 201 (class 1259 OID 25155)
@@ -399,7 +386,7 @@ CREATE SEQUENCE funcionario_id_seq
     CACHE 1;
 
 
-ALTER TABLE funcionario_id_seq OWNER TO postgres;
+
 
 --
 -- TOC entry 2435 (class 0 OID 0)
@@ -421,7 +408,7 @@ CREATE TABLE horario (
 );
 
 
-ALTER TABLE horario OWNER TO postgres;
+
 
 --
 -- TOC entry 203 (class 1259 OID 25163)
@@ -436,7 +423,7 @@ CREATE SEQUENCE horario_id_seq
     CACHE 1;
 
 
-ALTER TABLE horario_id_seq OWNER TO postgres;
+
 
 --
 -- TOC entry 2436 (class 0 OID 0)
@@ -458,7 +445,6 @@ CREATE TABLE motivo (
 );
 
 
-ALTER TABLE motivo OWNER TO postgres;
 
 --
 -- TOC entry 205 (class 1259 OID 25171)
@@ -473,7 +459,7 @@ CREATE SEQUENCE motivo_id_seq
     CACHE 1;
 
 
-ALTER TABLE motivo_id_seq OWNER TO postgres;
+
 
 --
 -- TOC entry 2437 (class 0 OID 0)
@@ -496,7 +482,7 @@ CREATE TABLE motivo_status_agenda (
 );
 
 
-ALTER TABLE motivo_status_agenda OWNER TO postgres;
+
 
 --
 -- TOC entry 207 (class 1259 OID 25176)
@@ -510,8 +496,6 @@ CREATE SEQUENCE motivo_status_agenda_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE motivo_status_agenda_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2438 (class 0 OID 0)
@@ -533,7 +517,6 @@ CREATE TABLE objetivo (
 );
 
 
-ALTER TABLE objetivo OWNER TO postgres;
 
 --
 -- TOC entry 2439 (class 0 OID 0)
@@ -557,7 +540,7 @@ CREATE SEQUENCE objetivo_id_seq
     CACHE 1;
 
 
-ALTER TABLE objetivo_id_seq OWNER TO postgres;
+
 
 --
 -- TOC entry 2440 (class 0 OID 0)
@@ -579,7 +562,6 @@ CREATE TABLE permissao (
 );
 
 
-ALTER TABLE permissao OWNER TO postgres;
 
 --
 -- TOC entry 211 (class 1259 OID 25192)
@@ -597,8 +579,6 @@ CREATE TABLE pessoa (
 );
 
 
-ALTER TABLE pessoa OWNER TO postgres;
-
 --
 -- TOC entry 212 (class 1259 OID 25198)
 -- Name: pessoa_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -612,7 +592,6 @@ CREATE SEQUENCE pessoa_id_seq
     CACHE 1;
 
 
-ALTER TABLE pessoa_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2441 (class 0 OID 0)
@@ -635,8 +614,6 @@ CREATE TABLE rota (
 );
 
 
-ALTER TABLE rota OWNER TO postgres;
-
 --
 -- TOC entry 214 (class 1259 OID 25203)
 -- Name: rota_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -649,8 +626,6 @@ CREATE SEQUENCE rota_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE rota_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2442 (class 0 OID 0)
@@ -681,7 +656,6 @@ CREATE TABLE schema_version (
 );
 
 
-ALTER TABLE schema_version OWNER TO postgres;
 
 --
 -- TOC entry 215 (class 1259 OID 25205)
@@ -694,7 +668,6 @@ CREATE TABLE status (
 );
 
 
-ALTER TABLE status OWNER TO postgres;
 
 --
 -- TOC entry 216 (class 1259 OID 25211)
@@ -711,7 +684,6 @@ CREATE TABLE status_agenda (
 );
 
 
-ALTER TABLE status_agenda OWNER TO postgres;
 
 --
 -- TOC entry 217 (class 1259 OID 25217)
@@ -726,7 +698,7 @@ CREATE SEQUENCE status_agenda_id_seq
     CACHE 1;
 
 
-ALTER TABLE status_agenda_id_seq OWNER TO postgres;
+
 
 --
 -- TOC entry 2443 (class 0 OID 0)
@@ -750,7 +722,6 @@ CREATE SEQUENCE status_id_seq
     CACHE 1;
 
 
-ALTER TABLE status_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2444 (class 0 OID 0)
@@ -772,8 +743,6 @@ CREATE TABLE tipo_usuario (
 );
 
 
-ALTER TABLE tipo_usuario OWNER TO postgres;
-
 --
 -- TOC entry 220 (class 1259 OID 25227)
 -- Name: tipo_usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -786,8 +755,6 @@ CREATE SEQUENCE tipo_usuario_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE tipo_usuario_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2445 (class 0 OID 0)
@@ -810,7 +777,6 @@ CREATE TABLE tipo_usuario_permissao (
 );
 
 
-ALTER TABLE tipo_usuario_permissao OWNER TO postgres;
 
 --
 -- TOC entry 222 (class 1259 OID 25232)
@@ -825,7 +791,6 @@ CREATE SEQUENCE tipo_usuario_permissao_id_seq
     CACHE 1;
 
 
-ALTER TABLE tipo_usuario_permissao_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2446 (class 0 OID 0)
@@ -851,7 +816,7 @@ CREATE TABLE usuario (
 );
 
 
-ALTER TABLE usuario OWNER TO postgres;
+
 
 --
 -- TOC entry 224 (class 1259 OID 25240)
@@ -866,7 +831,6 @@ CREATE SEQUENCE usuario_id_seq
     CACHE 1;
 
 
-ALTER TABLE usuario_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 2447 (class 0 OID 0)
@@ -910,7 +874,7 @@ CREATE VIEW v_agenda AS
      JOIN usuario usu ON ((usu.id = sa.usuario)));
 
 
-ALTER TABLE v_agenda OWNER TO postgres;
+
 
 --
 -- TOC entry 2168 (class 2604 OID 25247)
