@@ -641,19 +641,6 @@ ALTER SEQUENCE rota_id_seq OWNED BY rota.id;
 -- Name: schema_version; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE schema_version (
-    version_rank integer NOT NULL,
-    installed_rank integer NOT NULL,
-    version character varying(50) NOT NULL,
-    description character varying(200) NOT NULL,
-    type character varying(20) NOT NULL,
-    script character varying(1000) NOT NULL,
-    checksum integer,
-    installed_by character varying(100) NOT NULL,
-    installed_on timestamp without time zone DEFAULT now() NOT NULL,
-    execution_time integer NOT NULL,
-    success boolean NOT NULL
-);
 
 
 
