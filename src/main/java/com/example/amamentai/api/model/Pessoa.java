@@ -1,6 +1,5 @@
 package com.example.amamentai.api.model;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Basic;

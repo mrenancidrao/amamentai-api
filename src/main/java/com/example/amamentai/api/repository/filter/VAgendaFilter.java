@@ -8,7 +8,7 @@ public class VAgendaFilter {
 		return doadora;
 	}
 
-	public void setStatus(String doadora) {
+	public void setDoadora(String doadora) {
 		this.doadora = doadora;
 	}
 	

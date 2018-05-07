@@ -14,12 +14,11 @@ import javax.persistence.criteria.Root;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.util.StringUtils;
 
 import com.example.amamentai.api.model.VAgenda;
 import com.example.amamentai.api.repository.filter.VAgendaFilter;
 import com.example.amamentai.api.repository.vagenda.VAgendaRepositoryQuery;
-
-
 
 public class VAgendaRepositoryImpl implements VAgendaRepositoryQuery{
 
@@ -51,9 +50,11 @@ public class VAgendaRepositoryImpl implements VAgendaRepositoryQuery{
 		
 		List<Predicate> predicates = new ArrayList<>();
 		
-		if (vAgendaFilter.getDoadora()!=null) {
-			predicates.add(builder.equal(root.get("doadora"), vAgendaFilter.getDoadora()));
+		if (!StringUtils.isEmpty(vAgendaFilter.getDoadora())) {
+			predicates.add(builder.like(
+					builder.lower(root.get("doadora")), "%" + vAgendaFilter.getDoadora() + "%"));
 		}
+		
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
