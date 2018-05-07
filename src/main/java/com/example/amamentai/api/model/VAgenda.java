@@ -6,6 +6,7 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -34,8 +35,7 @@ public class VAgenda implements Serializable {
     @Column(name = "objetivo")
     private String objetivo;
     @Column(name = "data_agenda")
-    @Temporal(TemporalType.DATE)
-    private Date dataAgenda;
+    private LocalDate dataAgenda;
     @Column(name = "rota")
     private String rota;
     @Column(name = "status")
@@ -81,11 +81,11 @@ public class VAgenda implements Serializable {
         this.objetivo = objetivo;
     }
 
-    public Date getDataAgenda() {
+    public LocalDate getDataAgenda() {
         return dataAgenda;
     }
 
-    public void setDataAgenda(Date dataAgenda) {
+    public void setDataAgenda(LocalDate dataAgenda) {
         this.dataAgenda = dataAgenda;
     }
 

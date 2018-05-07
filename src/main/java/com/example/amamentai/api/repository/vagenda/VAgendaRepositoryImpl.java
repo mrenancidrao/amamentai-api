@@ -55,6 +55,9 @@ public class VAgendaRepositoryImpl implements VAgendaRepositoryQuery{
 					builder.lower(root.get("doadora")), "%" + vAgendaFilter.getDoadora() + "%"));
 		}
 		
+		if (vAgendaFilter.getDataAgenda() != null) {
+			predicates.add(builder.equal(root.get("dataAgenda"), vAgendaFilter.getDataAgenda()));
+		}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}

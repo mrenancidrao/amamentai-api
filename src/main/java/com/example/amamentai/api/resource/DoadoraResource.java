@@ -1,12 +1,12 @@
 package com.example.amamentai.api.resource;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.amamentai.api.event.RecursoCriadoEvent;
 import com.example.amamentai.api.model.Doadora;
 import com.example.amamentai.api.repository.DoadoraRepository;
+import com.example.amamentai.api.repository.filter.DoadoraFilter;
 import com.example.amamentai.api.service.DoadoraService;
 
 @RestController
@@ -41,8 +42,8 @@ public class DoadoraResource {
 	
 	@GetMapping
 	@PreAuthorize("hasAuthority('ROLE_LISTAR_DOADORA') and #oauth2.hasScope('read')")
-	public List<Doadora> listar(){
-		return doadoraRepository.findAll();
+	public Page<Doadora> pesquisar(DoadoraFilter doadoraFilter, Pageable pageable){
+		return doadoraRepository.filtrar(doadoraFilter, pageable);
 	}
 	
 	@PostMapping
