@@ -17,6 +17,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
 import com.example.amamentai.api.model.Doadora;
+import com.example.amamentai.api.model.Doadora_;
+import com.example.amamentai.api.model.Pessoa_;
 import com.example.amamentai.api.repository.filter.DoadoraFilter;
 import com.example.amamentai.api.repository.doadora.DoadoraRepositoryQuery;
 
@@ -52,7 +54,7 @@ public class DoadoraRepositoryImpl implements DoadoraRepositoryQuery{
 		
 		if (!StringUtils.isEmpty(doadoraFilter.getNome())) {
 			predicates.add(builder.like(
-					builder.lower(root.get("pessoa.getNome()")), "%" + doadoraFilter.getNome() + "%"));
+					builder.lower(root.get(Doadora_.pessoa).get(Pessoa_.nome)), "%" + doadoraFilter.getNome().toLowerCase() + "%"));
 		}
 		
 		

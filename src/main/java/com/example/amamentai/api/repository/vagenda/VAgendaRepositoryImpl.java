@@ -52,7 +52,7 @@ public class VAgendaRepositoryImpl implements VAgendaRepositoryQuery{
 		
 		if (!StringUtils.isEmpty(vAgendaFilter.getDoadora())) {
 			predicates.add(builder.like(
-					builder.lower(root.get("doadora")), "%" + vAgendaFilter.getDoadora() + "%"));
+					builder.lower(root.get("doadora")), "%" + vAgendaFilter.getDoadora().toLowerCase() + "%"));
 		}
 		
 		if (vAgendaFilter.getDataAgenda() != null) {
