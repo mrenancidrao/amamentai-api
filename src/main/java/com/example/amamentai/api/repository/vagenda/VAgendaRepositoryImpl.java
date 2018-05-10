@@ -1,6 +1,7 @@
 package com.example.amamentai.api.repository.vagenda;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,8 +18,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
 import com.example.amamentai.api.model.VAgenda;
+import com.example.amamentai.api.model.VAgenda_;
 import com.example.amamentai.api.repository.filter.VAgendaFilter;
-import com.example.amamentai.api.repository.vagenda.VAgendaRepositoryQuery;
 
 public class VAgendaRepositoryImpl implements VAgendaRepositoryQuery{
 
@@ -33,7 +34,8 @@ public class VAgendaRepositoryImpl implements VAgendaRepositoryQuery{
 		
 		//criar as restrições (predicado)
 		Predicate[] predicates = criarRestricoes(vAgendaFilter, builder, root);
-		criteria.where(predicates);
+		criteria.where(predicates).orderBy(builder.desc(root.get(VAgenda_.dataAgenda)));
+		
 		
 		TypedQuery<VAgenda> query = manager.createQuery(criteria);
 		
@@ -49,15 +51,15 @@ public class VAgendaRepositoryImpl implements VAgendaRepositoryQuery{
 	private Predicate[] criarRestricoes(VAgendaFilter vAgendaFilter, CriteriaBuilder builder, Root<VAgenda> root) {
 		
 		List<Predicate> predicates = new ArrayList<>();
-		
-		if (!StringUtils.isEmpty(vAgendaFilter.getDoadora())) {
+		if (!StringUtils.isEmpty(vAgendaFilter.getDoadoraNome())) {
 			predicates.add(builder.like(
-					builder.lower(root.get("doadora")), "%" + vAgendaFilter.getDoadora().toLowerCase() + "%"));
+					builder.lower(root.get(VAgenda_.doadoraNome)), "%" + vAgendaFilter.getDoadoraNome().toLowerCase() + "%"));
 		}
 		
 		if (vAgendaFilter.getDataAgenda() != null) {
-			predicates.add(builder.equal(root.get("dataAgenda"), vAgendaFilter.getDataAgenda()));
+			predicates.add(builder.equal(root.get(VAgenda_.dataAgenda), vAgendaFilter.getDataAgenda()));
 		}
+		
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}

@@ -28,10 +28,12 @@ public class VAgenda implements Serializable {
     @Id
     @Column(name = "id")
     private Integer id;
-    @Column(name = "doacao")
-    private Integer doacao;
-    @Column(name = "doadora")
-    private String doadora;
+    @Column(name = "banco_id")
+    private Integer bancoId;
+    @Column(name = "banco_nome")
+    private String bancoNome;
+    @Column(name = "doadora_nome")
+    private String doadoraNome;
     @Column(name = "objetivo")
     private String objetivo;
     @Column(name = "data_agenda")
@@ -55,22 +57,6 @@ public class VAgenda implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getDoacao() {
-        return doacao;
-    }
-
-    public void setDoacao(Integer doacao) {
-        this.doacao = doacao;
-    }
-
-    public String getDoadora() {
-        return doadora;
-    }
-
-    public void setDoadora(String doadora) {
-        this.doadora = doadora;
     }
 
     public String getObjetivo() {
@@ -120,5 +106,35 @@ public class VAgenda implements Serializable {
     public void setUsuarioStatus(String usuarioStatus) {
         this.usuarioStatus = usuarioStatus;
     }
+
+	public Integer getBancoId() {
+		return bancoId;
+	}
+
+	public void setBancoId(Integer bancoId) {
+		this.bancoId = bancoId;
+	}
+
+	public String getBancoNome() {
+		return bancoNome;
+	}
+
+	public void setBancoNome(String bancoNome) {
+		this.bancoNome = bancoNome;
+	}
+
+	public String getDoadoraNome() {
+		return doadoraNome;
+	}
+
+	public void setDoadoraNome(String doadoraNome) {
+		this.doadoraNome = doadoraNome;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+    
+    
     
 }

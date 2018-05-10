@@ -6,17 +6,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class VAgendaFilter {
 	
-	private String doadora;
+	private String doadoraNome;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataAgenda;
+	
 
-	public String getDoadora() {
-		return doadora;
+	public String getDoadoraNome() {
+		return doadoraNome;
 	}
 
-	public void setDoadora(String doadora) {
-		this.doadora = doadora;
+	public void setDoadoraNome(String doadoraNome) {
+		this.doadoraNome = doadoraNome;
 	}
 
 	public LocalDate getDataAgenda() {

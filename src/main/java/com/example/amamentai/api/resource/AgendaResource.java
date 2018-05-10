@@ -1,5 +1,6 @@
 package com.example.amamentai.api.resource;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.amamentai.api.event.RecursoCriadoEvent;
 import com.example.amamentai.api.model.Agenda;
+import com.example.amamentai.api.model.Status;
+import com.example.amamentai.api.model.StatusAgenda;
+import com.example.amamentai.api.model.Usuario;
 import com.example.amamentai.api.repository.AgendaRepository;
+import com.example.amamentai.api.repository.StatusAgendaRepository;
 import com.example.amamentai.api.service.AgendaService;
 
 @RestController
@@ -32,6 +37,9 @@ public class AgendaResource {
 	
 	@Autowired
 	AgendaRepository agendaRepository;
+	
+	@Autowired
+	private StatusAgendaRepository statusAgendaRepository;
 	
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -49,7 +57,16 @@ public class AgendaResource {
 	@ResponseBody
 	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_AGENDA') and #oauth2.hasScope('write')")
 	public ResponseEntity<Agenda> criar(@Valid @RequestBody Agenda agenda, HttpServletResponse response){
+		StatusAgenda statusAgenda = new StatusAgenda();
+		
 		Agenda agendaSalva = agendaRepository.save(agenda);
+		
+		statusAgenda.setAgenda(agendaSalva);
+		statusAgenda.setData(new Date());
+		statusAgenda.setStatus(new Status(new Integer(1)));
+		statusAgenda.setUsuario(new Usuario(new Integer(2)));
+		statusAgendaRepository.save(statusAgenda);
+		
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, agendaSalva.getId()));
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(agendaSalva);			

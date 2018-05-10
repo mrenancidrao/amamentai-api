@@ -41,9 +41,12 @@ public class Agenda implements Serializable {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data;
-    @JoinColumn(name = "doacao", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Doacao doacao;
+    @JoinColumn(name = "doadora", referencedColumnName = "id")
+    @ManyToOne
+    private Doadora doadora;
+    @JoinColumn(name = "banco", referencedColumnName = "id")
+    @ManyToOne
+    private Banco banco;
     @JoinColumn(name = "objetivo", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Objetivo objetivo;
@@ -79,15 +82,24 @@ public class Agenda implements Serializable {
         this.data = data;
     }
 
-    public Doacao getDoacao() {
-        return doacao;
-    }
 
-    public void setDoacao(Doacao doacao) {
-        this.doacao = doacao;
-    }
+	public Doadora getDoadora() {
+		return doadora;
+	}
 
-    public Objetivo getObjetivo() {
+	public void setDoadora(Doadora doadora) {
+		this.doadora = doadora;
+	}
+
+	public Banco getBanco() {
+		return banco;
+	}
+
+	public void setBanco(Banco banco) {
+		this.banco = banco;
+	}
+
+	public Objetivo getObjetivo() {
         return objetivo;
     }
 

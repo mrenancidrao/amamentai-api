@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.amamentai.api.event.RecursoCriadoEvent;
-import com.example.amamentai.api.model.Doacao;
 import com.example.amamentai.api.model.Doadora;
 import com.example.amamentai.api.repository.DoadoraRepository;
 import com.example.amamentai.api.repository.filter.DoadoraFilter;
@@ -51,7 +49,7 @@ public class DoadoraResource {
 	@PostMapping
 	@ResponseBody
 	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_DOADORA') and #oauth2.hasScope('write')")
-	public ResponseEntity<Doadora> criar(@Valid @RequestBody Doadora doadora, Doacao doacao, HttpServletResponse response){
+	public ResponseEntity<Doadora> criar(@Valid @RequestBody Doadora doadora, HttpServletResponse response){
 		Doadora doadoraSalva = doadoraRepository.save(doadora);
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, doadoraSalva.getId()));
 		

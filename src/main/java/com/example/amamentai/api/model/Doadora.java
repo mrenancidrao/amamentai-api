@@ -6,6 +6,7 @@
 package com.example.amamentai.api.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,6 +17,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -31,11 +34,14 @@ public class Doadora implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "ativo")
-    private Boolean ativo;
     @JoinColumn(name = "pessoa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pessoa pessoa;
+    @Column(name = "data_parto")
+    @Temporal(TemporalType.DATE)
+    private Date dataParto;
+    @Column(name = "nome_bebe")
+    private String nomeBebe;
     
    
     public Doadora() {
@@ -53,14 +59,6 @@ public class Doadora implements Serializable {
         this.id = id;
     }
 
-    public Boolean getAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(Boolean ativo) {
-        this.ativo = ativo;
-    }
-
     public Pessoa getPessoa() {
         return pessoa;
     }
@@ -68,11 +66,24 @@ public class Doadora implements Serializable {
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
-
- 
-
     
-    @Override
+    public Date getDataParto() {
+		return dataParto;
+	}
+
+	public void setDataParto(Date dataParto) {
+		this.dataParto = dataParto;
+	}
+
+	public String getNomeBebe() {
+		return nomeBebe;
+	}
+
+	public void setNomeBebe(String nomeBebe) {
+		this.nomeBebe = nomeBebe;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
