@@ -58,7 +58,7 @@ public class Doacao implements Serializable {
         return doadoraParto;
     }
 
-    public void setDoadora(DoadoraParto doadoraParto) {
+    public void setDoadoraParto(DoadoraParto doadoraParto) {
         this.doadoraParto = doadoraParto;
     }
 
