@@ -23,9 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.amamentai.api.event.RecursoCriadoEvent;
 import com.example.amamentai.api.model.Doadora;
+import com.example.amamentai.api.model.Pessoa;
 import com.example.amamentai.api.repository.DoadoraRepository;
+import com.example.amamentai.api.repository.PessoaRepository;
 import com.example.amamentai.api.repository.filter.DoadoraFilter;
 import com.example.amamentai.api.service.DoadoraService;
+import com.example.amamentai.api.service.PessoaService;
 
 @RestController
 @RequestMapping("/doadora")
@@ -35,10 +38,16 @@ public class DoadoraResource {
 	DoadoraRepository doadoraRepository;
 	
 	@Autowired
+	private PessoaRepository pessoaRepository;
+	
+	@Autowired
 	private ApplicationEventPublisher publisher;
 	
 	@Autowired
 	private DoadoraService doadoraService;
+	
+	@Autowired
+	private PessoaService pessoaService;
 	
 	@GetMapping
 	@PreAuthorize("hasAuthority('ROLE_LISTAR_DOADORA') and #oauth2.hasScope('read')")
@@ -50,7 +59,11 @@ public class DoadoraResource {
 	@ResponseBody
 	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_DOADORA') and #oauth2.hasScope('write')")
 	public ResponseEntity<Doadora> criar(@Valid @RequestBody Doadora doadora, HttpServletResponse response){
+		Pessoa pessoaSalva = pessoaRepository.save(doadora.getPessoa());
+		
+		doadora.setPessoa(pessoaSalva);
 		Doadora doadoraSalva = doadoraRepository.save(doadora);
+		
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, doadoraSalva.getId()));
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(doadoraSalva);			
@@ -72,6 +85,8 @@ public class DoadoraResource {
 	@PutMapping("/{id}")
 	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_DOADORA') and #oauth2.hasScope('read')")
 	public ResponseEntity<Doadora> atualizar(@PathVariable Integer id, @Valid @RequestBody Doadora doadora){
+		pessoaService.atualizar(doadora.getPessoa().getId(), doadora.getPessoa());
+		
 		Doadora doadoraSalva = doadoraService.atualizar(id, doadora);
 		return ResponseEntity.ok(doadoraSalva);
 	}
