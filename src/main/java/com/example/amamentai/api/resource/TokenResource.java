@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.amamentai.api.config.property.AmamentaiApiProperty;
 
 @RestController
-@RequestMapping("/token")
+@RequestMapping("/tokens")
 public class TokenResource {
 	
 	@Autowired
