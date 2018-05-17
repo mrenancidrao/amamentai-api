@@ -1,0 +1,1 @@
+update usuario set password = '$2a$10$aY92MjBKBg.pWkS0e7jsK.DE6z.sBFYlBQmafrpx6ZNKuiktMRLHC' where email = 'enfermeiradasilva@gmail.com'
