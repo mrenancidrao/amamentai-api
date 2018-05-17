@@ -1,0 +1,1 @@
+insert into usuario(email, password, tipo_usuario, pessoa, ativo) values('admin@amamentai.com', '$2a$10$0eMbhwrqgae/yydQ7gMh/eHy8mN8Txnk.E5vig/LYsPegq3ZW31LC', 2, 2, true);
