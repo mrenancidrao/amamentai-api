@@ -72,4 +72,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public TokenEnhancer tokenEnhancer() {
 		return new CustomTokenEnhancer();
 	}
+	
 }

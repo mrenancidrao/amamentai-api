@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ import com.example.amamentai.api.model.StatusAgenda;
 import com.example.amamentai.api.model.Usuario;
 import com.example.amamentai.api.repository.AgendaRepository;
 import com.example.amamentai.api.repository.StatusAgendaRepository;
+import com.example.amamentai.api.security.UsuarioSistema;
 import com.example.amamentai.api.service.AgendaService;
 
 @RestController
@@ -47,6 +49,7 @@ public class AgendaResource {
 	@Autowired
 	private AgendaService agendaService;
 	
+		
 	@GetMapping
 	@PreAuthorize("hasAuthority('ROLE_LISTAR_AGENDA') and #oauth2.hasScope('read')")
 	public List<Agenda> listar(){
@@ -57,6 +60,7 @@ public class AgendaResource {
 	@ResponseBody
 	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_AGENDA') and #oauth2.hasScope('write')")
 	public ResponseEntity<Agenda> criar(@Valid @RequestBody Agenda agenda, HttpServletResponse response){
+		
 		StatusAgenda statusAgenda = new StatusAgenda();
 		
 		Agenda agendaSalva = agendaRepository.save(agenda);
@@ -64,7 +68,7 @@ public class AgendaResource {
 		statusAgenda.setAgenda(agendaSalva);
 		statusAgenda.setData(new Date());
 		statusAgenda.setStatus(new Status(new Integer(1)));
-		statusAgenda.setUsuario(new Usuario(new Integer(2)));
+		statusAgenda.setUsuario(new Usuario(new Integer(4)));
 		statusAgendaRepository.save(statusAgenda);
 		
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, agendaSalva.getId()));
@@ -91,6 +95,7 @@ public class AgendaResource {
 		Agenda agendaSalva = agendaService.atualizar(id, agenda);
 		return ResponseEntity.ok(agendaSalva);
 	}
+	
 	
 	@PutMapping("/{id}/confirmar")
 	@ResponseStatus(HttpStatus.NO_CONTENT)

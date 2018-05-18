@@ -1,19 +1,26 @@
 package com.example.amamentai.api.repository.filter;
 
-import com.example.amamentai.api.model.Status;
-
 public class StatusAgendaFilter {
 	
-	private Status status;
+	private Integer statusId;
+	
+	private Integer agendaId;
 
-	public Status getStatus() {
-		return status;
+	public Integer getStatusId() {
+		return statusId;
 	}
 
-	public void setStatus(Status status) {
-		this.status = status;
+	public void setStatusId(Integer statusId) {
+		this.statusId = statusId;
 	}
-	
-	
 
+	public Integer getAgendaId() {
+		return agendaId;
+	}
+
+	public void setAgendaId(Integer agendaId) {
+		this.agendaId = agendaId;
+	}
+
+	
 }
