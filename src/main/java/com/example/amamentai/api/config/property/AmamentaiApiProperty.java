@@ -5,9 +5,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("amamentai")
 public class AmamentaiApiProperty {
 
-	private String originPermitida = "http://localhost:4200";
-	
-	//private String originPermitida = "https://amamentai.herokuapp.com";
+	private String originPermitida = "https://amamentai.herokuapp.com";
+
+	//private String originPermitida = "http://localhost:4200";
 	
 	private final Seguranca seguranca = new Seguranca();
 	
