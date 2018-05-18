@@ -92,6 +92,20 @@ public class AgendaResource {
 		return ResponseEntity.ok(agendaSalva);
 	}
 	
+	@PutMapping("/{id}/confirmar")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void confirmarAgenda(@PathVariable Integer id, @Valid @RequestBody Integer usuarioId) {
+		Agenda agenda = agendaRepository.findOne(id);
+		
+		StatusAgenda statusAgenda = new StatusAgenda();
+		statusAgenda.setAgenda(agenda);
+		statusAgenda.setData(new Date());
+		statusAgenda.setStatus(new Status(new Integer(2)));
+		statusAgenda.setUsuario(new Usuario(new Integer(usuarioId)));
+		
+		statusAgendaRepository.save(statusAgenda);
+	}
+	
 
 }
 

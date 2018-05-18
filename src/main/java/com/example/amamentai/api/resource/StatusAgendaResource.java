@@ -42,8 +42,8 @@ public class StatusAgendaResource {
 	
 	@GetMapping
 	@PreAuthorize("hasAuthority('ROLE_LISTAR_STATUS_AGENDA') and #oauth2.hasScope('read')")
-	public Page<StatusAgenda> pesquisar(StatusAgendaFilter lancamentoFilter, Pageable pageable){
-		return statusAgendaRepository.filtrar(lancamentoFilter, pageable);
+	public Page<StatusAgenda> pesquisar(StatusAgendaFilter agendaFilter, Pageable pageable){
+		return statusAgendaRepository.filtrar(agendaFilter, pageable);
 	}
 	
 	@PostMapping
