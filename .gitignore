@@ -1,6 +1,11 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+### IMUTAVEIS EM PRODUÇÃO ###
+src/main/java/com/example/amamentai/api/config/property/AmamentaiApiProperty.java
+.properties
+*.properties
+
 ### STS ###
 .apt_generated
 .classpath

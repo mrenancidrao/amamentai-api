@@ -10,6 +10,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(VAgenda.class)
 public abstract class VAgenda_ {
 
+	public static volatile SingularAttribute<VAgenda, Integer> pessoaId;
 	public static volatile SingularAttribute<VAgenda, String> doadoraNome;
 	public static volatile SingularAttribute<VAgenda, String> objetivo;
 	public static volatile SingularAttribute<VAgenda, Integer> bancoId;

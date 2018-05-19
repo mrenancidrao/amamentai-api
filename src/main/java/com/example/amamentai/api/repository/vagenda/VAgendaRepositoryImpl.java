@@ -17,6 +17,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
+import com.example.amamentai.api.model.Doadora_;
+import com.example.amamentai.api.model.Pessoa_;
 import com.example.amamentai.api.model.VAgenda;
 import com.example.amamentai.api.model.VAgenda_;
 import com.example.amamentai.api.repository.filter.VAgendaFilter;
@@ -59,6 +61,12 @@ public class VAgendaRepositoryImpl implements VAgendaRepositoryQuery{
 		if (vAgendaFilter.getDataAgenda() != null) {
 			predicates.add(builder.equal(root.get(VAgenda_.dataAgenda), vAgendaFilter.getDataAgenda()));
 		}
+		
+		if (vAgendaFilter.getPessoaId() != null) {
+			predicates.add(builder.equal(root.get(VAgenda_.pessoaId), vAgendaFilter.getPessoaId()));
+		}
+		
+		
 		
 		
 		return predicates.toArray(new Predicate[predicates.size()]);

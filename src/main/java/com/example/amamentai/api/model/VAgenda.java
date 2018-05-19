@@ -32,6 +32,8 @@ public class VAgenda implements Serializable {
     private Integer bancoId;
     @Column(name = "banco_nome")
     private String bancoNome;
+    @Column(name = "pessoa_id")
+    private Integer pessoaId;
     @Column(name = "doadora_nome")
     private String doadoraNome;
     @Column(name = "objetivo")
@@ -121,6 +123,15 @@ public class VAgenda implements Serializable {
 
 	public void setBancoNome(String bancoNome) {
 		this.bancoNome = bancoNome;
+	}
+	
+
+	public Integer getPessoaId() {
+		return pessoaId;
+	}
+
+	public void setPessoaId(Integer pessoaId) {
+		this.pessoaId = pessoaId;
 	}
 
 	public String getDoadoraNome() {

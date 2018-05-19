@@ -11,6 +11,8 @@ public class VAgendaFilter {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataAgenda;
 	
+	private Integer pessoaId;
+	
 
 	public String getDoadoraNome() {
 		return doadoraNome;
@@ -26,6 +28,14 @@ public class VAgendaFilter {
 
 	public void setDataAgenda(LocalDate dataAgenda) {
 		this.dataAgenda = dataAgenda;
+	}
+
+	public Integer getPessoaId() {
+		return pessoaId;
+	}
+
+	public void setPessoaId(Integer pessoaId) {
+		this.pessoaId = pessoaId;
 	}
 
 
