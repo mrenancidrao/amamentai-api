@@ -10,6 +10,7 @@ public class AmamentaiApiProperty {
 	
 	private String originPermitida = "https://amamentai.herokuapp.com";
 	
+	
 	private final Seguranca seguranca = new Seguranca();
 	
 	

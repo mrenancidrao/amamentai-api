@@ -32,7 +32,7 @@ public class CorsFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		
-		response.setHeader("Access-Control-Allow-Origin", "https://amamentai.herokuapp.com");
+		response.setHeader("Access-Control-Allow-Origin", amamentaiApiProperty.getOriginPermitida());
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 		
 		if ("OPTIONS".equals(request.getMethod()) && amamentaiApiProperty.getOriginPermitida().equals(request.getHeader("Origin"))) {
