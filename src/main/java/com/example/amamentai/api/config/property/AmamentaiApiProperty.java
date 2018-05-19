@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AmamentaiApiProperty {
 
 
-	// private String originPermitida = "http://localhost:4200";
+	//private String originPermitida = "http://localhost:4200";
 	
 	private String originPermitida = "https://amamentai-angular.herokuapp.com";
 	
