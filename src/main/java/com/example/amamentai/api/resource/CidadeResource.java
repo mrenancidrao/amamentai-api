@@ -40,7 +40,7 @@ public class CidadeResource {
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
-	@PreAuthorize("hasAuthority('ROLE_LISTAR_CIDADE') and #oauth2.hasScope('read')")
+	//@PreAuthorize("hasAuthority('ROLE_LISTAR_CIDADE') and #oauth2.hasScope('read')")
 	public List<Cidade> listar() {
 		return cidadeRepository.findAll();
 	}

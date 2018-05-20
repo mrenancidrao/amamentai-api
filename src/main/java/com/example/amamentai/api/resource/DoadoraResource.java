@@ -57,7 +57,7 @@ public class DoadoraResource {
 	
 	@PostMapping
 	@ResponseBody
-	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_DOADORA') and #oauth2.hasScope('write')")
+//	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_DOADORA') and #oauth2.hasScope('write')")
 	public ResponseEntity<Doadora> criar(@Valid @RequestBody Doadora doadora, HttpServletResponse response){
 		Pessoa pessoaSalva = pessoaRepository.save(doadora.getPessoa());
 		

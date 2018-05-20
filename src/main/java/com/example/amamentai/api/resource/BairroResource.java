@@ -42,7 +42,7 @@ public class BairroResource {
 	
 	@CrossOrigin(maxAge = 10, origins = { "http://localhost:8000" })
 	@GetMapping
-	@PreAuthorize("hasAuthority('ROLE_LISTAR_BAIRRO') and #oauth2.hasScope('read')")
+//	@PreAuthorize("hasAuthority('ROLE_LISTAR_BAIRRO') and #oauth2.hasScope('read')")
 	public List<Bairro> listar() {
 		return bairroRepository.findAll();
 	}
