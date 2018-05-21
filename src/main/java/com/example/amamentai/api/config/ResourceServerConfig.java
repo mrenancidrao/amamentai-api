@@ -39,7 +39,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		http.authorizeRequests()
 				.antMatchers("/bairro").permitAll()	
 				.antMatchers("/cidade").permitAll()
-				.antMatchers("/doadora").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
