@@ -13,6 +13,8 @@ public class VAgendaFilter {
 	
 	private Integer pessoaId;
 	
+	private String status;
+	
 
 	public String getDoadoraNome() {
 		return doadoraNome;
@@ -38,8 +40,12 @@ public class VAgendaFilter {
 		this.pessoaId = pessoaId;
 	}
 
+	public String getStatus() {
+		return status;
+	}
 
-	
-	
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 }

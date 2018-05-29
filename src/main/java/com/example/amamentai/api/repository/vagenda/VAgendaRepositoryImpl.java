@@ -66,7 +66,10 @@ public class VAgendaRepositoryImpl implements VAgendaRepositoryQuery{
 			predicates.add(builder.equal(root.get(VAgenda_.pessoaId), vAgendaFilter.getPessoaId()));
 		}
 		
-		
+		if (!StringUtils.isEmpty(vAgendaFilter.getStatus())) {
+			predicates.add(builder.equal(
+					builder.lower(root.get(VAgenda_.status)), vAgendaFilter.getStatus().toLowerCase()));
+		}
 		
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
