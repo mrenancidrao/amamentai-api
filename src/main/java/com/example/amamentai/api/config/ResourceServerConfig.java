@@ -36,10 +36,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-				.antMatchers("/bairro").permitAll()	
-				.antMatchers("/cidade").permitAll()
-				.anyRequest().authenticated()
+		http.authorizeRequests().antMatchers("/").permitAll()
+//				.antMatchers("/bairro").permitAll()	
+//				.antMatchers("/cidade").permitAll()
+//				.anyRequest().authenticated()
 				.and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.csrf().disable();

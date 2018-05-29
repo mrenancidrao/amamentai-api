@@ -1,5 +1,10 @@
 package com.example.amamentai.api.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -34,6 +39,23 @@ public class DoadoraService {
 			throw new EmptyResultDataAccessException(1);
 		}
 		return doadoraSalva;
+	}
+	
+	public List<Doadora> buscarTodas() {
+		return doadoraRepository.findAll();
+	}
+	
+	public List<Map<String, Object>> report() {
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		for (Doadora doadora : this.buscarTodas()) {
+			Map<String, Object> d = new HashMap<String, Object>();
+			d.put("id", doadora.getId());
+			d.put("nome", doadora.getPessoa().getNome());
+			d.put("dataParto", doadora.getDataParto());
+			d.put("nomeBebe", doadora.getNomeBebe());
+			result.add(d);
+		}
+		return result;
 	}
 
 }
