@@ -10,7 +10,6 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(VAgenda.class)
 public abstract class VAgenda_ {
 
-	public static volatile SingularAttribute<VAgenda, Integer> pessoaId;
 	public static volatile SingularAttribute<VAgenda, String> doadoraNome;
 	public static volatile SingularAttribute<VAgenda, String> objetivo;
 	public static volatile SingularAttribute<VAgenda, Integer> bancoId;
@@ -18,6 +17,7 @@ public abstract class VAgenda_ {
 	public static volatile SingularAttribute<VAgenda, String> bancoNome;
 	public static volatile SingularAttribute<VAgenda, Date> dataStatus;
 	public static volatile SingularAttribute<VAgenda, Integer> id;
+	public static volatile SingularAttribute<VAgenda, Integer> pessoaId;
 	public static volatile SingularAttribute<VAgenda, LocalDate> dataAgenda;
 	public static volatile SingularAttribute<VAgenda, String> rota;
 	public static volatile SingularAttribute<VAgenda, String> status;

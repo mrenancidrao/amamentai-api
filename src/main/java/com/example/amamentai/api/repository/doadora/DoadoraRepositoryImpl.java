@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -31,12 +32,16 @@ public class DoadoraRepositoryImpl implements DoadoraRepositoryQuery{
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<Doadora> criteria = builder.createQuery(Doadora.class);
 		Root<Doadora> root = criteria.from(Doadora.class);
+		List<Order> orderList = new ArrayList<Order>();
 		
 		//criar as restrições (predicado)
 		Predicate[] predicates = criarRestricoes(doadoraFilter, builder, root);
-		criteria.where(predicates);
 		
+		orderList.add(builder.asc(root.get(Doadora_.pessoa).get(Pessoa_.nome)));
+		
+		criteria.where(predicates).orderBy(orderList);
 		TypedQuery<Doadora> query = manager.createQuery(criteria);
+		
 		
 		adicionarRestricoesDePaginacao(query, pageable);
 		

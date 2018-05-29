@@ -30,6 +30,8 @@ public class AmamentaiApiProperty {
 	public Seguranca getSeguranca() {
 		return seguranca;
 	}
+	
+	
 
 
 
