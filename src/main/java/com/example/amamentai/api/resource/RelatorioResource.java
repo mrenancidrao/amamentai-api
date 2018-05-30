@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.amamentai.api.model.Doadora;
+import com.example.amamentai.api.repository.ConfiguracaoRepository;
 import com.example.amamentai.api.service.DoadoraService;
 
 import net.sf.jasperreports.engine.JRDataSource;
@@ -46,6 +47,9 @@ public class RelatorioResource {
 	private ServletContext context;
 	
 	@Autowired
+	ConfiguracaoRepository configuracaoRepository;
+	
+	@Autowired
 	private DoadoraService doadoraService;
 	
     @Value("${spring.datasource.url}")
@@ -57,8 +61,6 @@ public class RelatorioResource {
     @Value("${spring.datasource.password}")
 	private String passwordConnection;
     
-    @Value("${amamentai.origin-permitida}")
-    private String urlBase;
 	
     @GetMapping("/doadoras")
     public @ResponseBody void doadoras(HttpServletResponse response) {
@@ -94,6 +96,8 @@ public class RelatorioResource {
     public @ResponseBody void agenda(HttpServletResponse response) {
 	    try {
 	    	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/agenda_R.jrxml");
+	    	
+	    	
 			JasperDesign design = JRXmlLoader.load(jasperStream);
 			JasperReport report = JasperCompileManager.compileReport(design);
 			
@@ -104,9 +108,10 @@ public class RelatorioResource {
 			
 			parameterMap.put("data", new Date());
 			
-			parameterMap.put("SUBREPORT_DIR", context.getRealPath(PATH_SUB_REPORT));
-			parameterMap.put("URL_BASE", this.urlBase);
-
+			parameterMap.put("SUBREPORT_DIR", this.getClass().getResource("/reports").getPath());
+						
+			parameterMap.put("URL_BASE", this.getClass().getResource("/reports").getPath());
+			
 			Connection conn = null;
 			
 			try {

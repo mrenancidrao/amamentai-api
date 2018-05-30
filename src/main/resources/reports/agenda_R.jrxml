@@ -4,15 +4,16 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/home/renan/workspace-sts/amamentai-api/src/main/resources/reports/"
-
-]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/home/renan/workspace-sts/amamentai-api/src/main/resources/reports/"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="data" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="URL_BASE" class="java.lang.String">
 		<defaultValueExpression><![CDATA["/home/renan/workspace-sts/amamentai-api/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{URL_BASE}+"img/logo-amamentai.png"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT a.id,
@@ -154,9 +155,12 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<subreport>
-				<reportElement uuid="15cf8af3-987b-44e2-a2ec-7d8ffb80a0d0" x="-21" y="0" width="200" height="79"/>
+				<reportElement uuid="d4a4b47d-9405-4c16-98b3-d60763586e5a" x="-20" y="0" width="200" height="79"/>
+				<subreportParameter name="URL_BASE">
+					<subreportParameterExpression><![CDATA[$P{URL_BASE}]]></subreportParameterExpression>
+				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "cabecalho_R.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/cabecalho_R.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</title>
