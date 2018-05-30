@@ -3,6 +3,9 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="URL_BASE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["/home/renan/workspace-sts/amamentai-api/"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select 1;]]>
 	</queryString>
@@ -14,7 +17,7 @@
 		<band height="118" splitType="Stretch">
 			<image>
 				<reportElement uuid="0cc4be97-cb2f-4d21-b673-0614c72ee2d1" x="0" y="-17" width="236" height="134"/>
-				<imageExpression><![CDATA["/home/renan/workspace-sts/amamentai-api/img/logo-amamentai.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{URL_BASE}+"img/logo-amamentai.png"]]></imageExpression>
 			</image>
 			<line>
 				<reportElement uuid="c203156f-6000-4122-bef6-8b3a7ad8b2b8" x="0" y="92" width="595" height="1" forecolor="#53BACC"/>

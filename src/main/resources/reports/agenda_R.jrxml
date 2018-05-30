@@ -11,6 +11,9 @@
 	<parameter name="data" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="URL_BASE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["/home/renan/workspace-sts/amamentai-api/"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT a.id,
     b.id AS banco_id,

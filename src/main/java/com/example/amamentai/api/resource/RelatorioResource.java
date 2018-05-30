@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,12 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 @RequestMapping("/relatorio")
 public class RelatorioResource {
 	
+	public static final String PATH_REPORT = "/reports/";
+	public static final String PATH_SUB_REPORT = "/reports/";
+	
+	@Autowired
+	private ServletContext context;
+	
 	@Autowired
 	private DoadoraService doadoraService;
 	
@@ -49,6 +56,9 @@ public class RelatorioResource {
     
     @Value("${spring.datasource.password}")
 	private String passwordConnection;
+    
+    @Value("${amamentai.origin-permitida}")
+    private String urlBase;
 	
     @GetMapping("/doadoras")
     public @ResponseBody void doadoras(HttpServletResponse response) {
@@ -93,6 +103,9 @@ public class RelatorioResource {
 			JRDataSource jRDataSource = new JRBeanCollectionDataSource(agenda);*/
 			
 			parameterMap.put("data", new Date());
+			
+			parameterMap.put("SUBREPORT_DIR", context.getRealPath(PATH_SUB_REPORT));
+			parameterMap.put("URL_BASE", this.urlBase);
 
 			Connection conn = null;
 			
