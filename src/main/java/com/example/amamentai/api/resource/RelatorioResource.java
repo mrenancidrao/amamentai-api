@@ -111,9 +111,9 @@ public class RelatorioResource {
 			
 			parameterMap.put("data", new Date());
 			
-			parameterMap.put("SUBREPORT_DIR", this.getClass().getResourceAsStream("/reports"));
+			parameterMap.put("SUBREPORT_DIR", this.getClass().getResourceAsStream("/reports").toString());
 						
-			parameterMap.put("URL_BASE", this.getClass().getResourceAsStream("/reports"));
+			parameterMap.put("URL_BASE", this.getClass().getResourceAsStream("/reports").toString());
 			
 			Connection conn = null;
 			
