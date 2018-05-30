@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cabecalho_R" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d020b1f2-1f30-4657-bee2-6990181451b4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select 1;]]>
+	</queryString>
+	<field name="?column?" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="-17" width="236" height="134" uuid="0cc4be97-cb2f-4d21-b673-0614c72ee2d1"/>
+				<imageExpression><![CDATA["D:\\desenv\\workspace-sts\\amamentai-api\\img\\logo-amamentai.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="92" width="595" height="1" forecolor="#53BACC" uuid="c203156f-6000-4122-bef6-8b3a7ad8b2b8"/>
+				<graphicElement>
+					<pen lineWidth="3.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="98" width="595" height="1" forecolor="#53BACC" uuid="dc282e02-7825-4f71-82a4-6b3942558e1f"/>
+				<graphicElement>
+					<pen lineWidth="5.0"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="479" y="63" width="116" height="27" forecolor="#333333" uuid="7cc81041-c626-4b4a-9955-7d6a4f3297e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new String("Relatório gerado em: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()))]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

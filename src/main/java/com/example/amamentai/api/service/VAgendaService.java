@@ -1,5 +1,7 @@
 package com.example.amamentai.api.service;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -34,6 +36,10 @@ public class VAgendaService {
 			throw new EmptyResultDataAccessException(1);
 		}
 		return vAgendaSalva;
+	}
+	
+	public List<VAgenda> buscarTodas() {
+		return vAgendaRepository.findAll();
 	}
 
 }
