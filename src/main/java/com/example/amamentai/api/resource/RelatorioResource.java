@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -63,6 +64,7 @@ public class RelatorioResource {
     
 	
     @GetMapping("/doadoras")
+    @PreAuthorize("hasAuthority('ROLE_LISTAR_PESSOA') and #oauth2.hasScope('read')")
     public @ResponseBody void doadoras(HttpServletResponse response) {
 	    try {
 	    	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/report1.jrxml");
@@ -93,6 +95,7 @@ public class RelatorioResource {
     }
     
     @GetMapping("/agenda")
+    @PreAuthorize("hasAuthority('ROLE_LISTAR_PESSOA') and #oauth2.hasScope('read')")
     public @ResponseBody void agenda(HttpServletResponse response) {
 	    try {
 	    	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/agenda_R.jrxml");
