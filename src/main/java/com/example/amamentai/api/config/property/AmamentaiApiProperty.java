@@ -1,8 +1,12 @@
 package com.example.amamentai.api.config.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
+@Configuration
 @ConfigurationProperties("amamentai")
+@PropertySource("classpath:application-${spring.profile}.properties")
 public class AmamentaiApiProperty {
 
 

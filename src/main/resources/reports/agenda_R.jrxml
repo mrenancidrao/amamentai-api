@@ -4,7 +4,9 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["D:\\desenv\\workspace-sts\\amamentai-api\\src\\main\\resources\\reports\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/home/renan/workspace-sts/amamentai-api/src/main/resources/reports/"
+
+]]></defaultValueExpression>
 	</parameter>
 	<parameter name="data" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -67,13 +69,13 @@
 		<groupHeader>
 			<band height="34">
 				<rectangle>
-					<reportElement x="0" y="0" width="555" height="34" backcolor="#9BD3DD" uuid="be23105a-cf11-4a05-9259-6c0598434aea"/>
+					<reportElement uuid="be23105a-cf11-4a05-9259-6c0598434aea" x="0" y="0" width="555" height="34" backcolor="#9BD3DD"/>
 					<graphicElement>
 						<pen lineWidth="0.0"/>
 					</graphicElement>
 				</rectangle>
 				<textField>
-					<reportElement x="0" y="0" width="555" height="33" uuid="52e2cf0c-6d6d-4b83-9c14-6ea591802da5"/>
+					<reportElement uuid="52e2cf0c-6d6d-4b83-9c14-6ea591802da5" x="0" y="0" width="555" height="33"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
@@ -90,48 +92,48 @@
 		<groupHeader>
 			<band height="52">
 				<rectangle>
-					<reportElement x="0" y="-1" width="555" height="27" backcolor="#9BD3DD" uuid="0838a9bf-b0ae-4f39-94b0-0bd2c3141051"/>
+					<reportElement uuid="0838a9bf-b0ae-4f39-94b0-0bd2c3141051" x="0" y="-1" width="555" height="27" backcolor="#9BD3DD"/>
 					<graphicElement>
 						<pen lineWidth="0.0"/>
 					</graphicElement>
 				</rectangle>
 				<staticText>
-					<reportElement x="8" y="2" width="48" height="20" uuid="71629ac0-443b-4594-8f7e-a8c0f54f65b8"/>
+					<reportElement uuid="71629ac0-443b-4594-8f7e-a8c0f54f65b8" x="8" y="2" width="48" height="20"/>
 					<textElement verticalAlignment="Middle">
 						<font fontName="Arial" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Bairro: ]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="67" y="2" width="488" height="20" uuid="75dc1096-86e3-48c3-a4aa-1bc5a2a25354"/>
+					<reportElement uuid="75dc1096-86e3-48c3-a4aa-1bc5a2a25354" x="67" y="2" width="488" height="20"/>
 					<textElement verticalAlignment="Middle">
 						<font fontName="Arial" size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{bairro}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement mode="Opaque" x="0" y="27" width="257" height="25" backcolor="#9BD3DD" uuid="0c877b7c-15a9-43d0-9a29-80adcd3586f4"/>
+					<reportElement uuid="0c877b7c-15a9-43d0-9a29-80adcd3586f4" mode="Opaque" x="0" y="27" width="257" height="25" backcolor="#9BD3DD"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12"/>
 					</textElement>
 					<text><![CDATA[Doadora]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="488" y="27" width="67" height="25" backcolor="#9BD3DD" uuid="c4096e3c-21f3-41ec-a7cd-4a8085bfeac8"/>
+					<reportElement uuid="c4096e3c-21f3-41ec-a7cd-4a8085bfeac8" mode="Opaque" x="488" y="27" width="67" height="25" backcolor="#9BD3DD"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12"/>
 					</textElement>
 					<text><![CDATA[Objetivo]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="258" y="27" width="179" height="25" backcolor="#9BD3DD" uuid="e5b00fbb-6763-4cd9-8e27-227129fa44e7"/>
+					<reportElement uuid="e5b00fbb-6763-4cd9-8e27-227129fa44e7" mode="Opaque" x="258" y="27" width="179" height="25" backcolor="#9BD3DD"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12"/>
 					</textElement>
 					<text><![CDATA[Logradouro]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="438" y="27" width="49" height="25" backcolor="#9BD3DD" uuid="66cfc760-f74b-4ba9-9a92-2bccee8a2ee8"/>
+					<reportElement uuid="66cfc760-f74b-4ba9-9a92-2bccee8a2ee8" mode="Opaque" x="438" y="27" width="49" height="25" backcolor="#9BD3DD"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="12"/>
 					</textElement>
@@ -149,7 +151,7 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<subreport>
-				<reportElement x="-21" y="0" width="200" height="79" uuid="15cf8af3-987b-44e2-a2ec-7d8ffb80a0d0"/>
+				<reportElement uuid="15cf8af3-987b-44e2-a2ec-7d8ffb80a0d0" x="-21" y="0" width="200" height="79"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "cabecalho_R.jasper"]]></subreportExpression>
 			</subreport>
@@ -158,7 +160,7 @@
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="555" height="34" uuid="5109cbe8-dd0a-4a7a-9b8f-2f3977111ea4"/>
+				<reportElement uuid="5109cbe8-dd0a-4a7a-9b8f-2f3977111ea4" x="0" y="0" width="555" height="34"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="16" isBold="true"/>
 				</textElement>
@@ -168,25 +170,33 @@
 	</pageHeader>
 	<detail>
 		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="69fc2092-cc65-427e-860f-72863430ddaa" x="0" y="0" width="555" height="30" backcolor="#EEEEEE">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT}%2==1]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
 			<textField>
-				<reportElement x="8" y="0" width="249" height="30" uuid="49225054-c129-4ba8-8a8e-1f1eeb2e55b2"/>
+				<reportElement uuid="49225054-c129-4ba8-8a8e-1f1eeb2e55b2" x="8" y="0" width="249" height="30"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{doadora_nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="488" y="0" width="67" height="30" uuid="01602b57-bec6-4c4b-bdf3-87a24c2250ba"/>
+				<reportElement uuid="01602b57-bec6-4c4b-bdf3-87a24c2250ba" x="488" y="0" width="67" height="30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{objetivo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="258" y="0" width="179" height="30" uuid="ca28159e-7e94-42ce-8b90-4d60a4cbc97a"/>
+				<reportElement uuid="ca28159e-7e94-42ce-8b90-4d60a4cbc97a" x="258" y="0" width="179" height="30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{logradouro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="438" y="0" width="49" height="30" uuid="86a0f2dc-340e-4eed-ab7e-d8c82f8bcdad"/>
+				<reportElement uuid="86a0f2dc-340e-4eed-ab7e-d8c82f8bcdad" x="438" y="0" width="49" height="30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
 			</textField>
@@ -204,7 +214,7 @@
 	<noData>
 		<band height="50">
 			<textField>
-				<reportElement x="0" y="18" width="555" height="20" uuid="b7367b60-9432-428a-82f4-aec44a7f2dd2"/>
+				<reportElement uuid="b7367b60-9432-428a-82f4-aec44a7f2dd2" x="0" y="18" width="555" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[new String("Nenhum agendamento encontrado para " + $P{data})]]></textFieldExpression>
 			</textField>

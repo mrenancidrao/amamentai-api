@@ -6,7 +6,6 @@ import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -15,15 +14,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.amamentai.api.config.property.AmamentaiApiProperty;
 import com.example.amamentai.api.model.Doadora;
 import com.example.amamentai.api.service.DoadoraService;
-import com.example.amamentai.api.service.VAgendaService;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -41,12 +39,17 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 public class RelatorioResource {
 	
 	@Autowired
-	private VAgendaService vAgendaService;
-	
-	@Autowired
 	private DoadoraService doadoraService;
 	
+    @Value("${spring.datasource.url}")
+	private String urlConnection;
     
+    @Value("${spring.datasource.username}")
+	private String usernameConnection;
+    
+    @Value("${spring.datasource.password}")
+	private String passwordConnection;
+	
     @GetMapping("/doadoras")
     public @ResponseBody void doadoras(HttpServletResponse response) {
 	    try {
@@ -94,7 +97,7 @@ public class RelatorioResource {
 			Connection conn = null;
 			
 			try {
-				conn = DriverManager.getConnection("jdbc:postgresql://localhost/amamentai-api?autoReconnect=true","postgres","postgres");
+				conn = DriverManager.getConnection(this.urlConnection,this.usernameConnection,this.passwordConnection);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
