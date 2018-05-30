@@ -118,28 +118,28 @@
 				<staticText>
 					<reportElement uuid="0c877b7c-15a9-43d0-9a29-80adcd3586f4" mode="Opaque" x="0" y="27" width="257" height="25" backcolor="#9BD3DD"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="SansSerif" size="12" isBold="true"/>
+						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Doadora]]></text>
 				</staticText>
 				<staticText>
 					<reportElement uuid="c4096e3c-21f3-41ec-a7cd-4a8085bfeac8" mode="Opaque" x="488" y="27" width="67" height="25" backcolor="#9BD3DD"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="SansSerif" size="12" isBold="true"/>
+						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Objetivo]]></text>
 				</staticText>
 				<staticText>
 					<reportElement uuid="e5b00fbb-6763-4cd9-8e27-227129fa44e7" mode="Opaque" x="258" y="27" width="179" height="25" backcolor="#9BD3DD"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="SansSerif" size="12" isBold="true"/>
+						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Logradouro]]></text>
 				</staticText>
 				<staticText>
 					<reportElement uuid="66cfc760-f74b-4ba9-9a92-2bccee8a2ee8" mode="Opaque" x="438" y="27" width="49" height="25" backcolor="#9BD3DD"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="SansSerif" size="12" isBold="true"/>
+						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Número]]></text>
 				</staticText>
@@ -153,7 +153,31 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="90" splitType="Stretch">
+			<image>
+				<reportElement uuid="0cc4be97-cb2f-4d21-b673-0614c72ee2d1" x="-19" y="-45" width="236" height="134"/>
+				<imageExpression><![CDATA[$P{URL_BASE}+"/img/logo-amamentai.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement uuid="dc282e02-7825-4f71-82a4-6b3942558e1f" x="-19" y="72" width="595" height="1" forecolor="#53BACC"/>
+				<graphicElement>
+					<pen lineWidth="5.0"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="7cc81041-c626-4b4a-9955-7d6a4f3297e6" x="460" y="37" width="116" height="27" forecolor="#333333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new String("Relatório gerado em: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()))]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="c203156f-6000-4122-bef6-8b3a7ad8b2b8" x="-19" y="66" width="595" height="1" forecolor="#53BACC"/>
+				<graphicElement>
+					<pen lineWidth="3.0"/>
+				</graphicElement>
+			</line>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
@@ -179,28 +203,28 @@
 			<textField>
 				<reportElement uuid="49225054-c129-4ba8-8a8e-1f1eeb2e55b2" x="8" y="0" width="249" height="30"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" size="12"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{doadora_nome}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="01602b57-bec6-4c4b-bdf3-87a24c2250ba" x="488" y="0" width="67" height="30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="12"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{objetivo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="ca28159e-7e94-42ce-8b90-4d60a4cbc97a" x="258" y="0" width="179" height="30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="12"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{logradouro}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="86a0f2dc-340e-4eed-ab7e-d8c82f8bcdad" x="438" y="0" width="49" height="30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="12"/>
+					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
 			</textField>
