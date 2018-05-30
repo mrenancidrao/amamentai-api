@@ -153,16 +153,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
-			<subreport>
-				<reportElement uuid="d4a4b47d-9405-4c16-98b3-d60763586e5a" x="-20" y="0" width="200" height="79"/>
-				<subreportParameter name="URL_BASE">
-					<subreportParameterExpression><![CDATA[$P{URL_BASE}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/cabecalho_R.jasper"]]></subreportExpression>
-			</subreport>
-		</band>
+		<band height="79" splitType="Stretch"/>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
