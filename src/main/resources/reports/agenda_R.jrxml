@@ -6,7 +6,7 @@
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/renan/workspace-sts/amamentai-api/src/main/resources/reports/"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="data" class="java.util.Date">
+	<parameter name="data" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="URL_BASE" class="java.lang.String">
@@ -50,7 +50,7 @@
      JOIN bairro ON bairro.id = pessoa.bairro
      JOIN usuario usu ON usu.id = sa.usuario
 
-
+	where sa.status = 2 and a.data = $P{data}::DATE
 
      order by banco_nome, bairro, doadora_nome, logradouro]]>
 	</queryString>
@@ -165,7 +165,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
+		<band height="57" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="555" height="34" uuid="5109cbe8-dd0a-4a7a-9b8f-2f3977111ea4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -173,6 +173,13 @@
 				</textElement>
 				<textFieldExpression><![CDATA[new String("AGENDAMENTOS - " + new SimpleDateFormat("dd/MM/yyyy").format($F{data_agenda}))]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="34" width="555" height="23" uuid="2d642c14-8fae-4d57-bca8-507e373dd918"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[ROTA PARA COLETA DE DOAÇÕES / ENTREGA DE KITs COLETA]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<detail>

@@ -6,6 +6,8 @@ import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -97,20 +100,18 @@ public class RelatorioResource {
 		}
     }
     
-    @GetMapping("/agenda")
+    @GetMapping("/agenda/{data}")
     @PreAuthorize("hasAuthority('ROLE_LISTAR_PESSOA') and #oauth2.hasScope('read')")
-    public @ResponseBody void agenda(HttpServletResponse response) {
+    public @ResponseBody void agenda(HttpServletResponse response, @PathVariable String data) {
 	    try {
 	    	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/agenda_R.jrxml");
-	    	
-	    	
 	    	
 			JasperDesign design = JRXmlLoader.load(jasperStream);
 			JasperReport report = JasperCompileManager.compileReport(design);
 			
 			Map<String, Object> parameterMap = new HashMap();
 			
-			parameterMap.put("data", new Date());
+			parameterMap.put("data", data);
 			
 			if (this.profileAtivo.equals("dev")) {
 				parameterMap.put("SUBREPORT_DIR", this.getClass().getResource("/reports/").getPath());
