@@ -6,21 +6,19 @@ import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,8 +45,6 @@ public class RelatorioResource {
 	public static final String PATH_REPORT = "/reports/";
 	public static final String PATH_SUB_REPORT = "/reports/";
 	
-	@Autowired
-	private ServletContext context;
 	
 	@Autowired
 	ConfiguracaoRepository configuracaoRepository;
@@ -100,9 +96,9 @@ public class RelatorioResource {
 		}
     }
     
-    @GetMapping("/agenda/{data}")
+    @PostMapping("/agenda")
     @PreAuthorize("hasAuthority('ROLE_LISTAR_PESSOA') and #oauth2.hasScope('read')")
-    public @ResponseBody void agenda(HttpServletResponse response, @PathVariable String data) {
+    public @ResponseBody void agenda(HttpServletResponse response, @Valid @RequestBody String dataAgenda) {
 	    try {
 	    	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/agenda_R.jrxml");
 	    	
@@ -111,7 +107,7 @@ public class RelatorioResource {
 			
 			Map<String, Object> parameterMap = new HashMap();
 			
-			parameterMap.put("data", data);
+			parameterMap.put("data", dataAgenda);
 			
 			if (this.profileAtivo.equals("dev")) {
 				parameterMap.put("SUBREPORT_DIR", this.getClass().getResource("/reports/").getPath());
