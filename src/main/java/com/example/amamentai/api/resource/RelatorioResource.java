@@ -100,15 +100,12 @@ public class RelatorioResource {
 	    try {
 	    	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/agenda_R.jrxml");
 	    	
-	    	String urlProd = "/app/target/classes/reports";
+	    	String urlProd = "/app/target/classes/reports/";
 	    	
 			JasperDesign design = JRXmlLoader.load(jasperStream);
 			JasperReport report = JasperCompileManager.compileReport(design);
 			
 			Map<String, Object> parameterMap = new HashMap();
-			
-			/*List<VAgenda> agenda = vAgendaService.buscarTodas();
-			JRDataSource jRDataSource = new JRBeanCollectionDataSource(agenda);*/
 			
 			parameterMap.put("data", new Date());
 			
