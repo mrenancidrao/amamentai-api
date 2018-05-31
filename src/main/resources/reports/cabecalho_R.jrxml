@@ -16,25 +16,25 @@
 	<title>
 		<band height="118" splitType="Stretch">
 			<image>
-				<reportElement uuid="0cc4be97-cb2f-4d21-b673-0614c72ee2d1" x="0" y="-17" width="236" height="134"/>
+				<reportElement x="0" y="-17" width="236" height="134" uuid="0cc4be97-cb2f-4d21-b673-0614c72ee2d1"/>
 				<imageExpression><![CDATA[$P{URL_BASE}+"/img/logo-amamentai.png"]]></imageExpression>
 			</image>
 			<line>
-				<reportElement uuid="c203156f-6000-4122-bef6-8b3a7ad8b2b8" x="0" y="92" width="595" height="1" forecolor="#53BACC"/>
+				<reportElement x="0" y="92" width="595" height="1" forecolor="#53BACC" uuid="c203156f-6000-4122-bef6-8b3a7ad8b2b8"/>
 				<graphicElement>
 					<pen lineWidth="3.0"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="dc282e02-7825-4f71-82a4-6b3942558e1f" x="0" y="98" width="595" height="1" forecolor="#53BACC"/>
+				<reportElement x="0" y="98" width="595" height="1" forecolor="#53BACC" uuid="dc282e02-7825-4f71-82a4-6b3942558e1f"/>
 				<graphicElement>
 					<pen lineWidth="5.0"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement uuid="7cc81041-c626-4b4a-9955-7d6a4f3297e6" x="479" y="63" width="116" height="27" forecolor="#333333"/>
+				<reportElement x="479" y="63" width="116" height="27" forecolor="#333333" uuid="7cc81041-c626-4b4a-9955-7d6a4f3297e6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" isBold="false" isItalic="true"/>
+					<font fontName="SansSerif" isBold="false" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new String("Relatório gerado em: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()))]]></textFieldExpression>
 			</textField>

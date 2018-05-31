@@ -153,30 +153,15 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="90" splitType="Stretch">
-			<image>
-				<reportElement x="-19" y="-45" width="236" height="134" uuid="0cc4be97-cb2f-4d21-b673-0614c72ee2d1"/>
-				<imageExpression><![CDATA[$P{URL_BASE}+"/img/logo-amamentai.png"]]></imageExpression>
-			</image>
-			<line>
-				<reportElement x="-19" y="72" width="595" height="1" forecolor="#53BACC" uuid="dc282e02-7825-4f71-82a4-6b3942558e1f"/>
-				<graphicElement>
-					<pen lineWidth="5.0"/>
-				</graphicElement>
-			</line>
-			<textField>
-				<reportElement x="460" y="37" width="116" height="27" forecolor="#333333" uuid="7cc81041-c626-4b4a-9955-7d6a4f3297e6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="false" isItalic="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new String("Relatório gerado em: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()))]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="-19" y="66" width="595" height="1" forecolor="#53BACC" uuid="c203156f-6000-4122-bef6-8b3a7ad8b2b8"/>
-				<graphicElement>
-					<pen lineWidth="3.0"/>
-				</graphicElement>
-			</line>
+		<band height="75" splitType="Stretch">
+			<subreport>
+				<reportElement x="-19" y="0" width="200" height="75" uuid="116b7954-29c2-47d1-89cd-30b76924151a"/>
+				<subreportParameter name="URL_BASE">
+					<subreportParameterExpression><![CDATA[$P{URL_BASE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "cabecalho_R.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</title>
 	<pageHeader>
