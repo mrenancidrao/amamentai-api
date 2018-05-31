@@ -62,6 +62,9 @@ public class RelatorioResource {
     @Value("${spring.datasource.password}")
 	private String passwordConnection;
     
+    @Value("${amamentai.profileAtivo}")
+  	private String profileAtivo;
+    
 	
     @GetMapping("/doadoras")
     @PreAuthorize("hasAuthority('ROLE_LISTAR_PESSOA') and #oauth2.hasScope('read')")
@@ -100,7 +103,7 @@ public class RelatorioResource {
 	    try {
 	    	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/agenda_R.jrxml");
 	    	
-	    	String urlProd = "/app/target/classes/reports/";
+	    	
 	    	
 			JasperDesign design = JRXmlLoader.load(jasperStream);
 			JasperReport report = JasperCompileManager.compileReport(design);
@@ -109,12 +112,16 @@ public class RelatorioResource {
 			
 			parameterMap.put("data", new Date());
 			
-			/*parameterMap.put("SUBREPORT_DIR", this.getClass().getResource("/reports").getPath());
-			parameterMap.put("URL_BASE", this.getClass().getResource("/reports").getPath());			
-			*/
+			if (this.profileAtivo.equals("dev")) {
+				parameterMap.put("SUBREPORT_DIR", this.getClass().getResource("/reports/").getPath());
+				parameterMap.put("URL_BASE", this.getClass().getResource("/reports/").getPath());
+			}
 			
-			parameterMap.put("SUBREPORT_DIR", urlProd);
-			parameterMap.put("URL_BASE", urlProd);
+			if (this.profileAtivo.equals("prod")) {
+				String urlProd = "/app/target/classes/reports/";
+				parameterMap.put("SUBREPORT_DIR", urlProd);
+				parameterMap.put("URL_BASE", urlProd);
+			}
 			
 			
 			
