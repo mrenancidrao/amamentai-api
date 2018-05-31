@@ -100,6 +100,7 @@ public class RelatorioResource {
 	    try {
 	    	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/agenda_R.jrxml");
 	    	
+	    	String urlProd = "/app/target/classes/reports";
 	    	
 			JasperDesign design = JRXmlLoader.load(jasperStream);
 			JasperReport report = JasperCompileManager.compileReport(design);
@@ -111,8 +112,13 @@ public class RelatorioResource {
 			
 			parameterMap.put("data", new Date());
 			
-			parameterMap.put("SUBREPORT_DIR", this.getClass().getResource("/reports").getPath());
-						
+			/*parameterMap.put("SUBREPORT_DIR", this.getClass().getResource("/reports").getPath());
+			parameterMap.put("SUBREPORT_DIR", this.getClass().getResource("/reports").getPath());*/
+			
+			parameterMap.put("SUBREPORT_DIR", urlProd);
+			parameterMap.put("SUBREPORT_DIR", urlProd);
+			
+			
 			parameterMap.put("URL_BASE", this.getClass().getResource("/reports").getPath());
 			
 			Connection conn = null;
