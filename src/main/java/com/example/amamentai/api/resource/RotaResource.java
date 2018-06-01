@@ -39,13 +39,13 @@ public class RotaResource {
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
-	@PreAuthorize("hasAuthority('ROLE_LISTAR_OBJETIVO') and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_LISTAR_ROTA') and #oauth2.hasScope('read')")
 	public List<Rota> listar() {
 		return rotaRepository.findAll();
 	}
 	
 	@PostMapping
-	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_OBJETIVO') and #oauth2.hasScope('write')")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_ROTA') and #oauth2.hasScope('write')")
 	public ResponseEntity<Rota> criar(@Valid @RequestBody Rota rota, HttpServletResponse response) {
 		Rota rotaSalvo = rotaRepository.save(rota);
 		
@@ -56,7 +56,7 @@ public class RotaResource {
 	
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_OBJETIVO') and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_ROTA') and #oauth2.hasScope('read')")
 	public Rota buscarPeloId(@PathVariable Integer id) {
 		return rotaRepository.findOne(id);
 	}
@@ -64,13 +64,13 @@ public class RotaResource {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@PreAuthorize("hasAuthority('ROLE_REMOVER_OBJETIVO') and #oauth2.hasScope('write')")
+	@PreAuthorize("hasAuthority('ROLE_REMOVER_ROTA') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Integer id) {
 		rotaRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_OBJETIVO') and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_ROTA') and #oauth2.hasScope('read')")
 	public ResponseEntity<Rota> atualizar(@PathVariable Integer id, @Valid @RequestBody Rota rota){
 		Rota rotaSalvo = rotaService.atualizar(id, rota);
 		return ResponseEntity.ok(rotaSalvo);

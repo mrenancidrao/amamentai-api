@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="agenda_R" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="989d13d3-33b7-445a-903f-59dab4cee3c7">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="371"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/renan/workspace-sts/amamentai-api/src/main/resources/reports/"]]></defaultValueExpression>
 	</parameter>
@@ -68,6 +68,9 @@
 	<field name="status" class="java.lang.String"/>
 	<field name="data_status" class="java.sql.Date"/>
 	<field name="usuario_status" class="java.lang.String"/>
+	<variable name="dataSelecionada" class="java.util.Date">
+		<initialValueExpression><![CDATA[new SimpleDateFormat("yyyy-MM-dd").parse($P{data})]]></initialValueExpression>
+	</variable>
 	<group name="banco">
 		<groupExpression><![CDATA[$F{banco_nome}]]></groupExpression>
 		<groupHeader>
@@ -116,28 +119,28 @@
 					<textFieldExpression><![CDATA[$F{bairro}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement mode="Opaque" x="0" y="27" width="257" height="25" backcolor="#9BD3DD" uuid="0c877b7c-15a9-43d0-9a29-80adcd3586f4"/>
+					<reportElement mode="Opaque" x="0" y="27" width="211" height="25" backcolor="#9BD3DD" uuid="0c877b7c-15a9-43d0-9a29-80adcd3586f4"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Doadora]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="488" y="27" width="67" height="25" backcolor="#9BD3DD" uuid="c4096e3c-21f3-41ec-a7cd-4a8085bfeac8"/>
+					<reportElement mode="Opaque" x="442" y="27" width="113" height="25" backcolor="#9BD3DD" uuid="c4096e3c-21f3-41ec-a7cd-4a8085bfeac8"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Objetivo]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="258" y="27" width="179" height="25" backcolor="#9BD3DD" uuid="e5b00fbb-6763-4cd9-8e27-227129fa44e7"/>
+					<reportElement mode="Opaque" x="212" y="27" width="179" height="25" backcolor="#9BD3DD" uuid="e5b00fbb-6763-4cd9-8e27-227129fa44e7"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Logradouro]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="438" y="27" width="49" height="25" backcolor="#9BD3DD" uuid="66cfc760-f74b-4ba9-9a92-2bccee8a2ee8"/>
+					<reportElement mode="Opaque" x="392" y="27" width="49" height="25" backcolor="#9BD3DD" uuid="66cfc760-f74b-4ba9-9a92-2bccee8a2ee8"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="11" isBold="true"/>
 					</textElement>
@@ -193,28 +196,28 @@
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement x="8" y="0" width="249" height="30" uuid="49225054-c129-4ba8-8a8e-1f1eeb2e55b2"/>
+				<reportElement x="8" y="0" width="203" height="30" uuid="49225054-c129-4ba8-8a8e-1f1eeb2e55b2"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{doadora_nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="488" y="0" width="67" height="30" uuid="01602b57-bec6-4c4b-bdf3-87a24c2250ba"/>
+				<reportElement x="442" y="0" width="113" height="30" uuid="01602b57-bec6-4c4b-bdf3-87a24c2250ba"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="11"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{objetivo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="258" y="0" width="179" height="30" uuid="ca28159e-7e94-42ce-8b90-4d60a4cbc97a"/>
+				<reportElement x="212" y="0" width="179" height="30" uuid="ca28159e-7e94-42ce-8b90-4d60a4cbc97a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{logradouro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="438" y="0" width="49" height="30" uuid="86a0f2dc-340e-4eed-ab7e-d8c82f8bcdad"/>
+				<reportElement x="392" y="0" width="49" height="30" uuid="86a0f2dc-340e-4eed-ab7e-d8c82f8bcdad"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="11"/>
 				</textElement>
@@ -232,12 +235,18 @@
 		<band height="42" splitType="Stretch"/>
 	</summary>
 	<noData>
-		<band height="50">
+		<band height="500">
 			<textField>
-				<reportElement x="0" y="18" width="555" height="20" uuid="b7367b60-9432-428a-82f4-aec44a7f2dd2"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[new String("Nenhum agendamento encontrado para " + $P{data})]]></textFieldExpression>
+				<reportElement x="0" y="240" width="555" height="91" uuid="b7367b60-9432-428a-82f4-aec44a7f2dd2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new String("Nenhum agendamento confirmado para " + new SimpleDateFormat("dd/MM/yyyy").format($V{dataSelecionada}))]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="98" y="0" width="359" height="240" uuid="de9b5d61-e6d8-43a7-b5b2-395ca8a56b85"/>
+				<imageExpression><![CDATA[$P{URL_BASE}+"/img/logo-amamentai.png"]]></imageExpression>
+			</image>
 		</band>
 	</noData>
 </jasperReport>

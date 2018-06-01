@@ -9,13 +9,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -52,6 +55,12 @@ public class StatusAgenda implements Serializable {
     @JoinColumn(name = "usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuario usuario;
+    
+    
+    @OneToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinTable(name = "motivo_status_agenda", joinColumns = @JoinColumn(name = "status_agenda")
+    			, inverseJoinColumns = @JoinColumn(name = "motivo"))
+    Motivo motivo;
 
     public StatusAgenda() {
     }
@@ -114,7 +123,15 @@ public class StatusAgenda implements Serializable {
         this.usuario = usuario;
     }
 
-    @Override
+    public Motivo getMotivo() {
+		return motivo;
+	}
+
+	public void setMotivo(Motivo motivo) {
+		this.motivo = motivo;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);

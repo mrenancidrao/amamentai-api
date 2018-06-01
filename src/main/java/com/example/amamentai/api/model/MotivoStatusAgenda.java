@@ -37,6 +37,7 @@ public class MotivoStatusAgenda implements Serializable {
     @JoinColumn(name = "status_agenda", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusAgenda statusAgenda;
+    
 
     public MotivoStatusAgenda() {
     }

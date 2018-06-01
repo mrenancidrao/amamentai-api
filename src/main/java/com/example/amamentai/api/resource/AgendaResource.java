@@ -24,10 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.amamentai.api.event.RecursoCriadoEvent;
 import com.example.amamentai.api.model.Agenda;
+import com.example.amamentai.api.model.MotivoStatusAgenda;
 import com.example.amamentai.api.model.Status;
 import com.example.amamentai.api.model.StatusAgenda;
 import com.example.amamentai.api.model.Usuario;
 import com.example.amamentai.api.repository.AgendaRepository;
+import com.example.amamentai.api.repository.MotivoStatusAgendaRepository;
 import com.example.amamentai.api.repository.StatusAgendaRepository;
 import com.example.amamentai.api.service.AgendaService;
 
@@ -40,6 +42,9 @@ public class AgendaResource {
 	
 	@Autowired
 	private StatusAgendaRepository statusAgendaRepository;
+	
+	@Autowired
+	private MotivoStatusAgendaRepository motivoStatusAgendaRepository;
 	
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -109,7 +114,23 @@ public class AgendaResource {
 		statusAgendaRepository.save(statusAgenda);
 	}
 	
-
+	@PostMapping("/cancelar")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void cancelarAgenda(@Valid @RequestBody MotivoStatusAgenda params) {
+		
+		StatusAgenda statusAgenda = new StatusAgenda();
+		statusAgenda.setAgenda(params.getStatusAgenda().getAgenda());
+		statusAgenda.setData(new Date());
+		statusAgenda.setStatus(new Status(new Integer(3)));
+		statusAgenda.setUsuario(params.getStatusAgenda().getUsuario());
+		
+		statusAgendaRepository.save(statusAgenda);
+		
+		params.setStatusAgenda(statusAgenda);
+		motivoStatusAgendaRepository.save(params);
+		
+	}
+	
 }
 
 
