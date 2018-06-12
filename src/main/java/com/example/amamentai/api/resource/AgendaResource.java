@@ -1,5 +1,6 @@
 package com.example.amamentai.api.resource;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -65,6 +66,13 @@ public class AgendaResource {
 	public ResponseEntity<Agenda> criar(@Valid @RequestBody Agenda agenda, HttpServletResponse response){
 		
 		StatusAgenda statusAgenda = new StatusAgenda();
+		
+		//GAMBIARA AJEITAR DEPOIS
+		Calendar c = Calendar.getInstance();
+		c.setTime(agenda.getData());
+		c.add(Calendar.DATE, +1);
+		
+		agenda.setData(c.getTime());
 		
 		Agenda agendaSalva = agendaRepository.save(agenda);
 		
